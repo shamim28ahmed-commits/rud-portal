@@ -4245,3 +4245,65 @@ html {
     height: 156px;
   }
 }
+
+/* Student portal account dropdown and session UI fixes. */
+.student-login-page .portal-account-menu {
+  right: 0;
+  top: 34px;
+  width: 150px;
+  background: #fff;
+  border: 1px solid #d6d6d6;
+  border-radius: 3px;
+  box-shadow: 0 5px 16px rgba(0, 0, 0, 0.18);
+  overflow: hidden;
+  z-index: 100;
+}
+
+.student-login-page.account-open .portal-account-menu {
+  display: block;
+}
+
+.student-login-page .portal-account-menu button {
+  width: 100%;
+  min-height: 31px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border: 0;
+  border-bottom: 1px solid #e8e8e8;
+  background: #fff;
+  color: #555;
+  padding: 0 12px;
+  font-size: 12px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.student-login-page .portal-account-menu button:last-child {
+  border-bottom: 0;
+  min-height: 38px;
+}
+
+.student-login-page .portal-account-menu button:hover {
+  background: #f5f5f5;
+}
+
+.student-login-page .portal-account-menu button::before {
+  width: 12px;
+  color: #444;
+  font-family: "Font Awesome 6 Free", Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 900;
+}
+
+.student-login-page .portal-account-menu button[data-portal-view="personal"]::before {
+  content: "\f007";
+}
+
+.student-login-page .portal-account-menu button[data-portal-view="password"]::before {
+  content: "\f023";
+}
+
+.student-login-page .portal-account-menu button[data-portal-view="logout"]::before {
+  content: "\f2f5";
+}

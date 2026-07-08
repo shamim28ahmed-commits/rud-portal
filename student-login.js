@@ -1,4 +1,5 @@
 const storageKey = "rudPortalStudents";
+const sessionKey = "rudPortalActiveStudentId";
 
 const fallbackStudents = [
   {
@@ -56,13 +57,29 @@ function saveStudents(nextStudents) {
 async function loadStudents() {
   currentStudents = localStudents();
 
-  if (!window.RudBackend?.enabled) return;
+  if (!window.RudBackend?.enabled) {
+    restorePortalSession();
+    return;
+  }
 
   try {
     const remoteStudents = await window.RudBackend.listStudents();
     if (remoteStudents && remoteStudents.length) saveStudents(remoteStudents);
   } catch (error) {
     console.error(error);
+  }
+  restorePortalSession();
+}
+
+function restorePortalSession() {
+  const activeId = localStorage.getItem(sessionKey);
+  if (!activeId) return;
+  const student = students().find((item) => item.id === activeId);
+  if (student) {
+    document.querySelector("#classicError").textContent = "";
+    showProfile(student);
+  } else {
+    localStorage.removeItem(sessionKey);
   }
 }
 
@@ -72,6 +89,7 @@ function showProfile(student) {
   document.querySelector("#classicLoginCard").hidden = true;
   document.querySelector(".student-alert").hidden = true;
   profile.hidden = false;
+  localStorage.setItem(sessionKey, student.id);
 
   const photo = student.photo
     ? `<img src="${student.photo}" alt="${student.name}">`
@@ -256,7 +274,7 @@ function personalHtml(student, activeTab) {
       ${line("Blood Group", student.bloodGroup)}
       ${line("National ID", student.nationalId)}
       ${line("Date of Birth", formatDate(student.dob))}
-      ${line("Birth Place", student.birthPlace)}
+      ${line("Birth Place", student.birthPlace || student.birth_place || student.birthplace)}
     </div>
 
     <div class="detail-box detail-left">
@@ -514,6 +532,7 @@ async function changePassword(event) {
 
 function logoutPortal() {
   document.body.classList.remove("portal-open", "quick-open", "side-open", "account-open");
+  localStorage.removeItem(sessionKey);
   window.currentPortalStudent = null;
   window.currentPortalPhoto = "";
   const alert = document.querySelector(".student-alert");

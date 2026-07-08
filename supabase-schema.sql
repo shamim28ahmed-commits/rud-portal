@@ -9,6 +9,7 @@ create table if not exists students (
   study_year text,
   admission_date date,
   dob date,
+  birth_place text,
   blood_group text,
   national_id text,
   religion text,

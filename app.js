@@ -322,6 +322,7 @@ function fillForm(student) {
   $("#studentId").value = student.id;
   $("#fullName").value = student.name;
   $("#dob").value = student.dob || "";
+  $("#birthPlace").value = student.birthPlace || "";
   $("#bloodGroup").value = student.bloodGroup || "";
   $("#nationalId").value = student.nationalId || "";
   $("#religion").value = student.religion || "";
@@ -367,6 +368,7 @@ async function saveForm(event) {
     id,
     name: $("#fullName").value.trim(),
     dob: $("#dob").value,
+    birthPlace: $("#birthPlace").value,
     bloodGroup: $("#bloodGroup").value,
     nationalId: $("#nationalId").value,
     religion: $("#religion").value,
