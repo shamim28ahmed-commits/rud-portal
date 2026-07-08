@@ -1,3091 +1,520 @@
-:root {
-  --blue-900: #06366f;
-  --blue-800: #094f9f;
-  --blue-600: #497faf;
-  --red: #ef3b3a;
-  --mint: #d1edf1;
-  --page: #efefef;
-  --card: #ffffff;
-  --line: #dddddd;
-  --field: #e0e0e0;
-  --text: #1c2740;
-  --muted: #6e7a8c;
-  --shadow: 0 12px 30px rgba(9, 79, 159, 0.08);
-  --radius: 6px;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-[hidden] {
-  display: none !important;
-}
-
-body {
-  margin: 0;
-  background: var(--page);
-  color: var(--text);
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 14px;
-}
-
-button,
-input,
-select,
-textarea {
-  font: inherit;
-}
-
-button {
-  cursor: pointer;
-}
-
-.app-shell {
-  min-height: 100vh;
-  display: grid;
-  grid-template-columns: 260px 1fr;
-}
-
-.sidebar {
-  background: var(--blue-900);
-  color: #fff;
-  padding: 22px 18px;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.brand-logo {
-  width: 44px;
-  height: 44px;
-  display: block;
-  border-radius: 50%;
-  background: #fff;
-  object-fit: contain;
-  padding: 2px;
-}
-
-.brand strong,
-.brand span {
-  display: block;
-}
-
-.brand span {
-  margin-top: 3px;
-  color: rgba(255, 255, 255, 0.72);
-  font-size: 12px;
-}
-
-.nav-list {
-  display: grid;
-  gap: 8px;
-}
-
-.nav-item {
-  border: 1px solid transparent;
-  background: transparent;
-  color: rgba(255, 255, 255, 0.78);
-  text-align: left;
-  padding: 11px 12px;
-  border-radius: var(--radius);
-}
-
-.nav-item:hover,
-.nav-item.active {
-  background: #fff;
-  color: var(--blue-800);
-  border-color: rgba(255, 255, 255, 0.2);
-}
-
-.sidebar-note {
-  margin-top: auto;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  background: rgba(255, 255, 255, 0.08);
-  padding: 14px;
-  border-radius: var(--radius);
-}
-
-.sidebar-note span,
-.sidebar-note strong,
-.sidebar-note small {
-  display: block;
-}
-
-.sidebar-note span,
-.sidebar-note small {
-  color: rgba(255, 255, 255, 0.7);
-}
-
-.sidebar-note strong {
-  margin: 4px 0 8px;
-}
-
-.sidebar-note a {
-  color: #fff;
-  text-decoration: underline;
-}
-
-.main-panel {
-  padding: 24px;
-  min-width: 0;
-}
-
-.topbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  margin-bottom: 20px;
-}
-
-.eyebrow {
-  margin: 0 0 5px;
-  color: var(--blue-600);
-  font-weight: 700;
-  text-transform: uppercase;
-  font-size: 12px;
-}
-
-h1,
-h2,
-h3,
-p {
-  margin-top: 0;
-}
-
-h1 {
-  margin-bottom: 0;
-  font-size: 28px;
-}
-
-h2 {
-  font-size: 19px;
-  margin-bottom: 4px;
-}
-
-h3 {
-  color: var(--blue-900);
-  font-size: 16px;
-}
-
-.top-actions,
-.filter-row,
-.section-title-row {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-.primary-button,
-.ghost-button,
-.danger-button {
-  min-height: 38px;
-  border-radius: var(--radius);
-  border: 1px solid transparent;
-  padding: 0 14px;
-  font-weight: 700;
-}
-
-.primary-button {
-  background: var(--blue-800);
-  color: #fff;
-}
-
-.primary-button:hover {
-  background: var(--blue-900);
-}
-
-.ghost-button {
-  background: #fff;
-  color: var(--blue-800);
-  border-color: var(--line);
-}
-
-.danger-button {
-  background: #fff;
-  color: var(--red);
-  border-color: rgba(239, 59, 58, 0.35);
-}
-
-.full {
-  width: 100%;
-}
-
-.view {
-  display: none;
-}
-
-.view.active {
-  display: block;
-}
-
-.metric-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 14px;
-  margin-bottom: 16px;
-}
-
-.metric,
-.panel,
-.login-card,
-.phase-card {
-  background: var(--card);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-}
-
-.metric {
-  padding: 18px;
-}
-
-.metric span {
-  color: var(--muted);
-  display: block;
-  margin-bottom: 8px;
-}
-
-.metric strong {
-  font-size: 30px;
-  color: var(--blue-800);
-}
-
-.content-grid,
-.portal-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1.25fr) minmax(320px, 0.75fr);
-  gap: 16px;
-}
-
-.panel,
-.login-card {
-  padding: 22px;
-}
-
-.panel-heading {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 16px;
-  border-bottom: 1px solid var(--field);
-  padding-bottom: 14px;
-  margin-bottom: 18px;
-}
-
-.panel-heading p {
-  color: var(--muted);
-  margin-bottom: 0;
-}
-
-input,
-select,
-textarea {
-  width: 100%;
-  min-height: 36px;
-  border: 1px solid #cfd6df;
-  border-radius: 3px;
-  padding: 8px 10px;
-  color: #494949;
-  background: #fff;
-  outline: none;
-}
-
-textarea {
-  min-height: 72px;
-  resize: vertical;
-}
-
-input:focus,
-select:focus,
-textarea:focus {
-  border-color: #66afe9;
-  box-shadow: 0 0 0 3px rgba(102, 175, 233, 0.2);
-}
-
-label {
-  color: #435063;
-  font-size: 12px;
-  font-weight: 700;
-  text-transform: uppercase;
-}
-
-label input,
-label select,
-label textarea {
-  margin-top: 7px;
-}
-
-.form-section {
-  padding: 16px 0;
-  border-bottom: 1px solid #eef1f5;
-}
-
-.form-section:last-child {
-  border-bottom: 0;
-}
-
-.form-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px;
-}
-
-.wide {
-  grid-column: 1 / -1;
-}
-
-.photo-row {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  margin-bottom: 18px;
-}
-
-.photo-preview {
-  width: 118px;
-  height: 128px;
-  border: 2px dashed #c8d1dc;
-  border-radius: var(--radius);
-  display: grid;
-  place-items: center;
-  overflow: hidden;
-  color: #6c7480;
-  background: #fafcff;
-}
-
-.photo-preview img,
-.avatar img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.upload-control {
-  display: grid;
-  gap: 8px;
-  max-width: 280px;
-}
-
-.upload-control small {
-  color: var(--muted);
-  text-transform: none;
-  font-weight: 400;
-}
-
-.table-wrap {
-  overflow-x: auto;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  min-width: 850px;
-  background: #fff;
-}
-
-th,
-td {
-  text-align: left;
-  border-bottom: 1px solid #edf0f4;
-  padding: 14px 16px;
-  vertical-align: middle;
-}
-
-th {
-  color: #3f4d62;
-  text-transform: uppercase;
-  font-size: 12px;
-  letter-spacing: 0;
-  background: #fbfcfe;
-}
-
-tr:last-child td {
-  border-bottom: 0;
-}
-
-.profile-cell {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.avatar {
-  width: 48px;
-  height: 48px;
-  border: 3px solid #e7e7e7;
-  border-radius: 4px;
-  display: grid;
-  place-items: center;
-  overflow: hidden;
-  background: var(--mint);
-  color: var(--blue-900);
-  font-weight: 800;
-}
-
-.profile-cell strong,
-.profile-cell span {
-  display: block;
-}
-
-.profile-cell span,
-.program-cell span {
-  color: var(--muted);
-  font-size: 12px;
-}
-
-.key-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  padding: 7px 9px;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  background: #fff;
-  font-family: Consolas, monospace;
-  color: var(--ink);
-  cursor: pointer;
-}
-
-.key-visible {
-  letter-spacing: 0;
-  font-weight: 700;
-  min-width: 92px;
-  justify-content: center;
-}
-
-.action-row {
-  display: flex;
-  gap: 6px;
-}
-
-.action-row button {
-  min-height: 32px;
-  padding: 0 9px;
-}
-
-.mini-list,
-.notice-list {
-  display: grid;
-  gap: 10px;
-}
-
-.mini-item,
-.notice-item {
-  border: 1px solid #edf0f4;
-  border-radius: var(--radius);
-  padding: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-}
-
-.mini-profile {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  min-width: 0;
-}
-
-.mini-profile .avatar {
-  width: 42px;
-  height: 42px;
-  flex: 0 0 42px;
-}
-
-.mini-profile div {
-  min-width: 0;
-}
-
-.mini-item span,
-.notice-item span {
-  color: var(--muted);
-  font-size: 12px;
-}
-
-.notice-form {
-  display: grid;
-  gap: 10px;
-  margin-bottom: 14px;
-}
-
-.compact-table table {
-  min-width: 720px;
-}
-
-.compact-table td {
-  padding: 8px;
-}
-
-.compact-table input {
-  min-height: 34px;
-}
-
-.login-card {
-  align-self: start;
-}
-
-.login-logo {
-  width: 72px;
-  height: 72px;
-  display: grid;
-  place-items: center;
-  background: var(--blue-800);
-  color: #fff;
-  border-radius: 50%;
-  font-weight: 800;
-  margin-bottom: 16px;
-}
-
-.login-card p,
-.login-card small {
-  color: var(--muted);
-}
-
-.login-card form {
-  display: grid;
-  gap: 14px;
-}
-
-.student-profile .profile-head {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  margin-bottom: 18px;
-}
-
-.student-profile .avatar {
-  width: 76px;
-  height: 76px;
-}
-
-.info-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px;
-}
-
-.info-box {
-  border: 1px solid #edf0f4;
-  border-radius: var(--radius);
-  padding: 12px;
-}
-
-.info-box span {
-  color: var(--muted);
-  display: block;
-  margin-bottom: 5px;
-  font-size: 12px;
-}
-
-.empty-state {
-  min-height: 320px;
-  display: grid;
-  place-items: center;
-  text-align: center;
-  color: var(--muted);
-}
-
-.empty-state strong {
-  color: var(--text);
-  display: block;
-  margin-bottom: 5px;
-}
-
-.phase-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 16px;
-}
-
-.phase-card {
-  padding: 20px;
-  border-top: 4px solid var(--blue-800);
-}
-
-.phase-card p {
-  color: var(--muted);
-  margin-bottom: 0;
-}
-
-.toast {
-  position: fixed;
-  right: 18px;
-  bottom: 18px;
-  background: var(--blue-900);
-  color: #fff;
-  border-radius: var(--radius);
-  padding: 12px 14px;
-  box-shadow: var(--shadow);
-  opacity: 0;
-  transform: translateY(10px);
-  pointer-events: none;
-  transition: 180ms ease;
-}
-
-.toast.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.student-login-page {
-  min-height: 100vh;
-  background: #efefef;
-  color: #000;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-.student-alert {
-  min-height: 115px;
-  background: #dddddd;
-  color: #6c0707;
-  display: grid;
-  place-content: center;
-  text-align: center;
-  font-weight: 700;
-  line-height: 1.4;
-  padding: 16px;
-}
-
-.student-alert p {
-  margin: 0;
-}
-
-.student-login-wrap {
-  min-height: calc(100vh - 115px);
-  display: grid;
-  justify-items: center;
-  align-content: start;
-  gap: 22px;
-  padding: 37px 16px 60px;
-}
-
-.classic-login-card {
-  width: 100%;
-  max-width: 378px;
-  border: 1px solid #dddddd;
-  background: #ffffff;
-  padding: 16px;
-}
-
-.classic-brand {
-  display: grid;
-  grid-template-columns: 106px 1px 1fr;
-  align-items: center;
-  gap: 14px;
-  min-height: 98px;
-}
-
-.classic-logo-img {
-  width: 88px;
-  height: 88px;
-  display: block;
-  margin: 0 auto;
-  border-radius: 50%;
-  object-fit: contain;
-}
-
-.classic-divider {
-  width: 1px;
-  height: 85px;
-  background: #e0e0e0;
-}
-
-.classic-title h1 {
-  margin: 0 0 10px;
-  color: #16324f;
-  font-size: 18px;
-  line-height: 1.2;
-}
-
-.classic-title p {
-  margin: 0;
-  color: #555;
-  font-size: 12px;
-  line-height: 1.4;
-  text-align: center;
-}
-
-.signin-copy {
-  text-align: center;
-  margin: 12px 0 30px;
-  color: #000;
-  font-size: 14px;
-}
-
-.classic-form {
-  display: grid;
-  gap: 10px;
-}
-
-.classic-form input {
-  height: 35px;
-  border: 2px solid #d1edf1;
-  border-radius: 0;
-  color: #494949;
-  font-size: 14px;
-  font-weight: 700;
-}
-
-.classic-form input::placeholder {
-  color: #d4d4d4;
-}
-
-.classic-form input:focus {
-  border-color: #66afe9;
-  box-shadow: 0 0 8px rgba(102, 175, 233, 0.45);
-}
-
-.classic-form button {
-  height: 51px;
-  border: 0;
-  border-radius: 3px;
-  background: #ef3b3a;
-  color: #fff;
-  font-weight: 700;
-  margin-top: 1px;
-}
-
-.classic-form button:hover {
-  background: #d82f2e;
-}
-
-.classic-help {
-  display: block;
-  margin-top: 31px;
-  color: #009cff;
-  text-align: center;
-  text-decoration: none;
-  font-size: 13px;
-}
-
-.classic-error {
-  min-height: 18px;
-  margin: 14px 0 0;
-  color: #ef3b3a;
-  text-align: center;
-  font-weight: 700;
-}
-
-.classic-profile {
-  width: 100%;
-  max-width: 620px;
-  background: #fff;
-  border: 1px solid #dddddd;
-  padding: 18px;
-}
-
-.classic-profile h2 {
-  color: #094f9f;
-}
-
-.classic-profile-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px;
-}
-
-.classic-profile-grid span {
-  border: 1px solid #e0e0e0;
-  padding: 10px;
-  color: #555;
-}
-
-.classic-profile-grid strong {
-  display: block;
-  color: #111;
-  margin-top: 4px;
-}
-
-.classic-profile,
-.classic-profile-grid,
-#studentProfile {
-  display: none !important;
-}
-
-.portal-open {
-  background: #ffffff;
-}
-
-.portal-open .student-login-wrap {
-  min-height: 100vh;
-  display: block;
-  padding: 0;
-}
-
-.student-portal-screen {
-  width: 100%;
-  min-height: 100vh;
-  background: #fff;
-  color: #333;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-.portal-topbar {
-  height: 58px;
-  border: 1px solid #29215f;
-  border-radius: 3px;
-  margin: 8px 4px 0;
-  display: flex;
-  align-items: center;
-  gap: 22px;
-  padding: 5px 16px;
-  background: #fff;
-  overflow: hidden;
-}
-
-.portal-logo-wrap {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  min-width: 190px;
-}
-
-.portal-logo-wrap img {
-  width: 44px;
-  height: 44px;
-  object-fit: contain;
-}
-
-.portal-logo-wrap strong {
-  display: block;
-  color: #17146a;
-  font-size: 30px;
-  line-height: 25px;
-  font-weight: 800;
-}
-
-.portal-logo-wrap span {
-  display: block;
-  color: #888;
-  letter-spacing: 5px;
-  font-size: 13px;
-}
-
-.portal-menu {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  flex: 1;
-  min-width: 0;
-  white-space: nowrap;
-  overflow: hidden;
-}
-
-.portal-menu button {
-  border: 0;
-  background: transparent;
-  color: #1f1764;
-  text-decoration: none;
-  font-size: 15px;
-  padding: 0;
-  flex: 0 0 auto;
-}
-
-.portal-menu button::before {
-  content: "■";
-  color: #1f1764;
-  font-size: 11px;
-  margin-right: 5px;
-}
-
-.portal-menu strong {
-  color: #f40000;
-  font-size: 13px;
-}
-
-.portal-user-icons {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  flex: 0 0 auto;
-  position: relative;
-  z-index: 2;
-}
-
-.bell {
-  position: relative;
-  color: #17146a;
-  font-weight: 700;
-  border: 0;
-  background: transparent;
-}
-
-.bell::before {
-  content: "";
-  position: absolute;
-  right: -7px;
-  top: -7px;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: #ff1d25;
-}
-
-.bell::after {
-  content: attr(class);
-  display: none;
-}
-
-.user-dot {
-  min-height: 26px;
-  border: 0;
-  border-radius: 14px;
-  background: #5eb64d;
-  color: #fff;
-  display: inline-flex;
-  align-items: center;
-  padding: 0 10px;
-  font-size: 12px;
-  font-weight: 700;
-}
-
-.portal-body {
-  display: grid;
-  grid-template-columns: 224px 1fr;
-  min-height: calc(100vh - 66px);
-}
-
-.portal-side {
-  padding: 22px 3px 0;
-  border-right: 1px solid #e4e4e4;
-  background: #fff;
-}
-
-.portal-side button,
-.portal-side a {
-  width: 220px;
-  min-height: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border: 0;
-  border-radius: 2px;
-  background: #2d2869;
-  color: #dedcf2;
-  margin-bottom: 4px;
-  padding: 0 10px;
-  text-align: left;
-  text-decoration: none;
-  font-size: 12px;
-}
-
-.portal-side a,
-.portal-side .side-link {
-  justify-content: flex-start;
-  background: #fff;
-  color: #555;
-  border: 1px solid #dadada;
-  border-top: 0;
-  margin: 0;
-  padding-left: 24px;
-}
-
-.portal-side .active-link {
-  border-bottom: 1px solid #2d2869;
-  color: #111;
-  background: #f8f8f8;
-}
-
-.portal-content {
-  min-width: 0;
-  padding: 0 12px 14px;
-}
-
-.portal-section-title {
-  height: 27px;
-  background: #28205f;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  padding-left: 10px;
-  font-size: 12px;
-}
-
-.student-info-card {
-  min-height: 532px;
-  border: 1px solid #e3e3e3;
-  border-top: 0;
-  padding: 12px 10px 34px;
-  display: grid;
-  grid-template-columns: 250px minmax(280px, 1fr) minmax(260px, 1fr);
-  gap: 20px;
-  align-items: start;
-}
-
-.student-photo {
-  width: 140px;
-  height: 144px;
-  border: 1px solid #888;
-  border-radius: 5px;
-  overflow: hidden;
-  margin: 0 auto;
-  background: #1da2d8;
-  display: grid;
-  place-items: center;
-}
-
-.student-photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.student-photo img.student-photo-logo {
-  object-fit: contain;
-  padding: 12px;
-  background: #ffffff;
-}
-
-.student-no-photo {
-  color: #6c7480;
-  font-size: 12px;
-}
-
-.info-lines {
-  padding-top: 14px;
-}
-
-.info-lines p,
-.detail-box p,
-.address-box p {
-  margin: 0 0 8px;
-  display: grid;
-  grid-template-columns: 160px 16px 1fr;
-  gap: 4px;
-  font-size: 10px;
-  line-height: 1.25;
-}
-
-.info-lines b,
-.detail-box b,
-.address-box b {
-  font-weight: 700;
-  color: #444;
-}
-
-.info-lines em,
-.detail-box em,
-.address-box em {
-  color: #666;
-  font-style: italic;
-}
-
-.detail-box {
-  border: 1px solid #d7d7d7;
-  border-radius: 3px;
-  min-height: 104px;
-  padding: 24px 10px 10px;
-}
-
-.detail-left {
-  grid-column: 1 / span 2;
-}
-
-.detail-right {
-  grid-column: 3;
-}
-
-.portal-tabs {
-  grid-column: 1 / -1;
-  border-bottom: 1px solid #d9d9d9;
-  margin: 2px 10px 0;
-  display: flex;
-  gap: 0;
-}
-
-.portal-tabs button {
-  height: 30px;
-  background: #fff;
-  border: 0;
-  border-top: 2px solid transparent;
-  padding: 0 10px;
-  color: #0c5fa5;
-  font-size: 10px;
-}
-
-.portal-tabs button.active {
-  color: #333;
-  border-top-color: #28205f;
-  border-left: 1px solid #d9d9d9;
-  border-right: 1px solid #d9d9d9;
-}
-
-.address-box {
-  grid-column: 1 / -1;
-  border: 1px solid #d7d7d7;
-  border-radius: 3px;
-  margin: -6px 10px 0;
-}
-
-.address-box h3 {
-  margin: 0 0 10px;
-  height: 27px;
-  border-bottom: 1px solid #d7d7d7;
-  color: #111;
-  font-size: 10px;
-  display: flex;
-  align-items: center;
-  padding-left: 10px;
-}
-
-.address-box p {
-  padding: 0 10px;
-  grid-template-columns: 200px 16px 1fr;
-}
-
-.portal-table {
-  width: calc(100% - 20px);
-  min-width: 640px;
-  margin: 0 10px 12px;
-  border-collapse: collapse;
-}
-
-.portal-table th,
-.portal-table td {
-  border: 1px solid #dddddd;
-  padding: 8px;
-  font-size: 11px;
-}
-
-.portal-table th {
-  background: #f5f5f5;
-}
-
-.portal-wide-panel {
-  grid-column: 1 / -1;
-  border: 1px solid #d7d7d7;
-  border-radius: 3px;
-  padding: 14px;
-  min-height: 300px;
-}
-
-.portal-wide-panel h3 {
-  color: #28205f;
-  margin-bottom: 14px;
-}
-
-.portal-row-card {
-  display: grid;
-  grid-template-columns: 180px 1fr 110px;
-  gap: 10px;
-  align-items: center;
-  border: 1px solid #e1e1e1;
-  padding: 10px;
-  margin-bottom: 8px;
-  font-size: 12px;
-}
-
-.portal-row-card em {
-  color: #0c5fa5;
-  font-style: normal;
-  text-align: right;
-}
-
-.portal-wide-panel > button,
-.portal-password-form button {
-  min-height: 34px;
-  border: 0;
-  border-radius: 3px;
-  background: #28205f;
-  color: #fff;
-  padding: 0 12px;
-  margin-right: 8px;
-  margin-bottom: 8px;
-}
-
-.portal-password-form {
-  grid-column: 1 / -1;
-  width: 100%;
-  max-width: 460px;
-  border: 1px solid #d7d7d7;
-  border-radius: 3px;
-  padding: 16px;
-}
-
-.portal-password-form label {
-  display: block;
-  margin-bottom: 12px;
-  color: #444;
-  text-transform: none;
-  font-size: 12px;
-}
-
-.portal-password-form p {
-  color: #0c5fa5;
-  font-weight: 700;
-  margin: 8px 0 0;
-}
-
-.curriculum-report {
-  grid-column: 1 / -1;
-  border: 1px solid #e3e3e3;
-  border-radius: 3px;
-  background: #fff;
-  overflow: hidden;
-  min-height: 360px;
-}
-
-.curriculum-header {
-  min-height: 44px;
-  background: #28205f;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 14px;
-}
-
-.curriculum-header h3 {
-  margin: 0;
-  color: #fff;
-  font-size: 16px;
-  font-weight: 400;
-}
-
-.curriculum-actions {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.curriculum-header button,
-.curriculum-actions button {
-  border: 0;
-  border-radius: 3px;
-  background: #ef4b43;
-  color: #fff;
-  min-height: 26px;
-  padding: 0 12px;
-  font-size: 12px;
-  font-weight: 700;
-}
-
-.curriculum-actions button[type="submit"] {
-  background: #15803d;
-}
-
-.curriculum-actions button#addCurriculumCourse {
-  background: #497faf;
-}
-
-.curriculum-info-table,
-.curriculum-course-table {
-  width: calc(100% - 28px);
-  margin: 14px;
-  border-collapse: collapse;
-  table-layout: fixed;
-}
-
-.curriculum-info-table td,
-.curriculum-course-table th,
-.curriculum-course-table td {
-  border: 1px solid #d9d9d9;
-  padding: 8px;
-  font-size: 12px;
-}
-
-.curriculum-info-table input,
-.curriculum-course-table input {
-  min-height: 24px;
-  border: 1px solid transparent;
-  background: transparent;
-  padding: 3px 5px;
-  font-size: 12px;
-}
-
-.curriculum-info-table input:focus,
-.curriculum-course-table input:focus {
-  border-color: #66afe9;
-  background: #fff;
-}
-
-.curriculum-info-table td:nth-child(2),
-.curriculum-info-table td:nth-child(5) {
-  width: 28px;
-  text-align: center;
-}
-
-.curriculum-info-table td:nth-child(1),
-.curriculum-info-table td:nth-child(4) {
-  width: 29%;
-}
-
-.curriculum-report h4 {
-  margin: 18px 0 12px;
-  text-align: center;
-  color: #111;
-  font-size: 16px;
-}
-
-.curriculum-course-table {
-  margin-top: 0;
-}
-
-.curriculum-course-table th {
-  background: #f5f5f5;
-  font-weight: 700;
-}
-
-.remove-course {
-  float: right;
-  min-height: 24px;
-  border: 1px solid rgba(239, 59, 58, 0.35);
-  border-radius: 3px;
-  background: #fff;
-  color: #ef3b3a;
-  font-size: 11px;
-}
-
-.curriculum-save-message {
-  margin: 0 14px 14px;
-  color: #15803d;
-  font-weight: 700;
-}
-
-.curriculum-save-message.error {
-  color: #ef3b3a;
-}
-
-.admin-login-page {
-  min-height: 100vh;
-  background: #efefef;
-  display: grid;
-  place-items: center;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-.admin-login-wrap {
-  width: 100%;
-  padding: 24px;
-  display: grid;
-  place-items: center;
-}
-
-.admin-login-card {
-  width: 100%;
-  max-width: 420px;
-  background: #fff;
-  border: 1px solid #dddddd;
-  border-top: 5px solid #094f9f;
-  border-radius: 6px;
-  box-shadow: 0 16px 38px rgba(9, 79, 159, 0.12);
-  padding: 24px;
-}
-
-.admin-login-brand {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 22px;
-}
-
-.admin-login-brand img {
-  width: 58px;
-  height: 58px;
-  object-fit: contain;
-}
-
-.admin-login-brand strong,
-.admin-login-brand span {
-  display: block;
-}
-
-.admin-login-brand strong {
-  color: #094f9f;
-  font-size: 24px;
-}
-
-.admin-login-brand span {
-  color: #6e7a8c;
-  margin-top: 3px;
-}
-
-.admin-login-card h1 {
-  margin: 0 0 6px;
-  color: #1c2740;
-}
-
-.admin-login-card p {
-  color: #6e7a8c;
-  margin-bottom: 18px;
-}
-
-.admin-login-form {
-  display: grid;
-  gap: 14px;
-}
-
-.admin-login-form label {
-  text-transform: none;
-  font-size: 13px;
-}
-
-.admin-login-form button {
-  min-height: 42px;
-  border: 0;
-  border-radius: 4px;
-  background: #094f9f;
-  color: #fff;
-  font-weight: 700;
-}
-
-.admin-login-error {
-  min-height: 18px;
-  color: #ef3b3a !important;
-  font-weight: 700;
-  margin: 12px 0 6px !important;
-}
-
-.admin-login-card small,
-.admin-login-card a {
-  display: block;
-  color: #6e7a8c;
-  margin-top: 10px;
-}
-
-.admin-login-card a {
-  color: #094f9f;
-  text-decoration: none;
-  font-weight: 700;
-}
-
-.rud-home-page {
-  margin: 0;
-  background: #fff;
-  color: #222;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-.rud-container {
-  width: min(1110px, calc(100% - 24px));
-  margin: 0 auto;
-}
-
-.rud-top-strip {
-  background: #272260;
-  color: #fff;
-  font-size: 16px;
-}
-
-.rud-top-strip .rud-container,
-.rud-logo-row .rud-container,
-.rud-main-nav .rud-container {
-  display: flex;
-  align-items: center;
-}
-
-.rud-top-strip .rud-container {
-  justify-content: space-between;
-  gap: 24px;
-  min-height: 33px;
-}
-
-.rud-top-links {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.rud-socials {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-}
-
-.rud-socials a {
-  width: 18px;
-  height: 18px;
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
-  background: #fff;
-  color: #272260;
-  font-size: 11px;
-  font-weight: 700;
-  line-height: 1;
-}
-
-.rud-socials a i,
-.rud-footer-socials a i {
-  display: none;
-}
-
-.rud-socials a::before,
-.rud-footer-socials a::before {
-  content: attr(data-icon);
-  display: block;
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: 700;
-  line-height: 1;
-}
-
-.rud-socials a[aria-label="Instagram"]::before,
-.rud-footer-socials a[aria-label="Instagram"]::before {
-  font-size: 14px;
-  line-height: 0.85;
-}
-
-.rud-socials a[aria-label="YouTube"]::before,
-.rud-footer-socials a[aria-label="YouTube"]::before {
-  font-size: 10px;
-  transform: translateX(1px);
-}
-
-.rud-top-strip a,
-.rud-main-nav a,
-.rud-footer a {
-  color: inherit;
-  text-decoration: none;
-}
-
-.rud-top-strip .rud-socials a {
-  color: #272260;
-}
-
-.rud-footer .rud-footer-socials a {
-  color: #073e68;
-}
-
-.rud-top-strip .student-link {
-  color: #fff;
-  font-weight: 400;
-}
-
-.rud-logo-row {
-  background: #fff;
-  border-bottom: 0;
-  overflow: hidden;
-}
-
-.rud-logo-row .rud-container {
-  min-height: 96px;
-  justify-content: space-between;
-  gap: 0;
-  position: relative;
-  max-width: 1110px;
-}
-
-.rud-brand-image {
-  display: flex;
-  align-items: center;
-  min-height: 96px;
-  flex: 1 1 auto;
-  background: #fff;
-  padding-right: 34px;
-}
-
-.rud-logo-row img {
-  max-width: 560px;
-  width: 100%;
-  height: auto;
-  display: block;
-  object-fit: contain;
-  transform: translateX(-8px);
-}
-
-.rud-header-actions {
-  min-height: 96px;
-  min-width: 505px;
-  background: #312b6e;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 18px;
-  padding: 0 12px 0 58px;
-  position: relative;
-}
-
-.rud-header-actions::before {
-  content: "";
-  position: absolute;
-  left: -55px;
-  top: 0;
-  width: 0;
-  height: 0;
-  border-top: 96px solid #312b6e;
-  border-left: 55px solid transparent;
-}
-
-.rud-action-circle {
-  width: 61px;
-  height: 61px;
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  color: #fff;
-  text-decoration: none;
-  font-size: 26px;
-  font-weight: 700;
-  position: relative;
-  z-index: 1;
-}
-
-.rud-search {
-  background: #c61920;
-}
-
-.rud-grad,
-.rud-whatsapp {
-  background: #26af68;
-}
-
-.rud-admission-btn {
-  background: #ffd51a;
-  color: #000;
-  min-width: 224px;
-  text-align: center;
-  padding: 17px 20px;
-  border-radius: 34px;
-  font-weight: 700;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 18px;
-  line-height: 1;
-  white-space: nowrap;
-  text-decoration: none;
-  position: relative;
-  z-index: 1;
-}
-
-.rud-main-nav {
-  background: #e5f3ed;
-  color: #000;
-  position: relative;
-  z-index: 5;
-}
-
-.rud-main-nav .rud-container {
-  min-height: 52px;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-  gap: 0;
-}
-
-.rud-main-nav a {
-  padding: 17px 12px;
-  font-weight: 400;
-  font-size: 18px;
-  font-family: Georgia, "Times New Roman", serif;
-  white-space: nowrap;
-}
-
-.rud-main-nav a:hover {
-  background: rgba(39, 34, 96, 0.08);
-}
-
-.rud-nav-item {
-  position: relative;
-}
-
-.rud-nav-item > a {
-  display: block;
-}
-
-.rud-academics-menu {
-  position: absolute;
-  left: 50vw;
-  top: 100%;
-  transform: translateX(-50vw);
-  width: 100vw;
-  background: #272260;
-  padding: 13px 12px;
-  display: none;
-  flex-wrap: wrap;
-  gap: 9px 10px;
-  z-index: 20;
-}
-
-.rud-nav-item:hover .rud-academics-menu {
-  display: flex;
-}
-
-.rud-dropdown-menu {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  min-width: 245px;
-  max-width: 420px;
-  background: #272260;
-  padding: 12px;
-  display: none;
-  z-index: 20;
-}
-
-.rud-admin-menu {
-  min-width: 345px;
-}
-
-.rud-nav-item:hover .rud-dropdown-menu {
-  display: grid;
-}
-
-.rud-dropdown-menu a,
-.rud-academics-menu a {
-  color: #fff;
-  border: 1px solid #fff;
-  padding: 10px 15px;
-  font-size: 16px;
-  font-weight: 700;
-  font-family: Georgia, "Times New Roman", serif;
-  background: transparent;
-  line-height: 1.1;
-}
-
-.rud-dropdown-menu a + a {
-  margin-top: 9px;
-}
-
-.rud-admission-menu {
-  min-width: 320px;
-}
-
-.rud-faculties-menu {
-  min-width: 420px;
-  max-height: 520px;
-  overflow-y: auto;
-}
-
-.rud-news-notice-menu {
-  min-width: 330px;
-}
-
-.rud-dropdown-menu a:hover,
-.rud-academics-menu a:hover {
-  background: rgba(255, 255, 255, 0.1);
-}
-
-.rud-hero {
-  min-height: 458px;
-  border-top: 5px solid #ed1c24;
-  border-bottom: 3px solid #ed1c24;
-  color: #fff;
-  position: relative;
-  overflow: hidden;
-  background: #272260;
-}
-
-.rud-slide {
-  position: absolute;
-  inset: 0;
-  background-position: center;
-  background-size: cover;
-  opacity: 0;
-  animation: rudHeroSlider 20s infinite;
-}
-
-.rud-slide::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(24, 25, 42, 0.42);
-}
-
-.rud-slide-1 {
-  background-image: url("https://www.royal.edu.bd/wp-content/uploads/2024/02/rud-home-banner-4th-slide.jpg");
-}
-
-.rud-slide-2 {
-  background-image: url("https://www.royal.edu.bd/wp-content/uploads/2024/02/rud-home-banner-bba-less-opacity.jpg");
-  animation-delay: 5s;
-}
-
-.rud-slide-3 {
-  background-image: url("https://www.royal.edu.bd/wp-content/uploads/2024/02/rud-home-banner-mba-opacity.jpg");
-  animation-delay: 10s;
-}
-
-.rud-slide-4 {
-  background-image: url("https://www.royal.edu.bd/wp-content/uploads/2024/02/rud-home-banner-msc-cse-lss-opacity.jpg");
-  animation-delay: 15s;
-}
-
-.rud-slide-text {
-  position: absolute;
-  z-index: 2;
-  left: 13.4%;
-  top: 39%;
-  transform: translateY(-50%);
-  font-family: Georgia, "Times New Roman", serif;
-}
-
-.rud-slide-text h1 {
-  margin: 0;
-  color: #fff;
-  font-size: 49px;
-  line-height: 1.1;
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
-}
-
-.rud-slide-text p {
-  margin: 10px 0 0;
-  color: #ed1c24;
-  font-size: 34px;
-  font-weight: 700;
-  line-height: 1.1;
-}
-
-.rud-slider-dots {
-  position: absolute;
-  z-index: 3;
-  left: 50%;
-  bottom: 52px;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 7px;
-}
-
-.rud-slider-dots span {
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  border: 3px solid #fff;
-  background: #272260;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
-}
-
-.rud-slider-dots span:nth-child(1) {
-  background: #ed1c24;
-}
-
-@keyframes rudHeroSlider {
-  0%,
-  20% {
-    opacity: 1;
+const storageKey = "rudPortalStudents";
+
+const fallbackStudents = [
+  {
+    id: "2203383239",
+    name: "Safol Hasan",
+    status: "Completed Study",
+    program: "B.Sc in Computer Science & Engineering (CSE)",
+    department: "Computer Science & Engineering",
+    batch: "22",
+    section: "A",
+    studyYear: "2022",
+    admissionDate: "2022-01-12",
+    bloodGroup: "B+",
+    nationalId: "",
+    dob: "",
+    birthPlace: "",
+    fatherName: "Md. Hasan",
+    motherName: "Mst. Hasan",
+    religion: "Islam",
+    presentAddress: "Dhaka, Bangladesh",
+    permanentAddress: "Dhaka, Bangladesh",
+    mobile: "01700000001",
+    guardianPhone: "01800000001",
+    email: "hasansafol2000@gmail.com",
+    key: "RUD2203",
+    cgpa: "3.72",
+    payment: "Paid",
+    results: "Spring 2026: GPA 3.70",
+    education: [
+      { exam: "S.S.C", group: "Science", institute: "Model School", year: "2016", division: "GPA 5.00", marks: "A+" },
+      { exam: "H.S.C", group: "Science", institute: "City College", year: "2018", division: "GPA 4.80", marks: "A" }
+    ]
   }
-  25%,
-  100% {
-    opacity: 0;
+];
+
+let currentStudents = [];
+let studentsReady = Promise.resolve();
+
+function students() {
+  return currentStudents;
+}
+
+function localStudents() {
+  const saved = localStorage.getItem(storageKey);
+  if (saved) return JSON.parse(saved);
+  localStorage.setItem(storageKey, JSON.stringify(fallbackStudents));
+  return fallbackStudents;
+}
+
+function saveStudents(nextStudents) {
+  currentStudents = nextStudents;
+  localStorage.setItem(storageKey, JSON.stringify(nextStudents));
+}
+
+async function loadStudents() {
+  currentStudents = localStudents();
+
+  if (!window.RudBackend?.enabled) return;
+
+  try {
+    const remoteStudents = await window.RudBackend.listStudents();
+    if (remoteStudents && remoteStudents.length) saveStudents(remoteStudents);
+  } catch (error) {
+    console.error(error);
   }
 }
 
-.rud-welcome a,
-.rud-more-link,
-.rud-portal-links a {
-  display: inline-block;
-  background: #ec1d25;
-  color: #fff;
-  padding: 11px 18px;
-  border-radius: 3px;
-  text-decoration: none;
-  font-weight: 700;
-}
-
-.rud-admission-notice {
-  background: #272260;
-  color: #fff;
-  border-bottom: 0;
-  padding: 0;
-  overflow: hidden;
-}
-
-.rud-news-grid h2,
-.rud-welcome h2,
-.rud-programs h2 {
-  color: #27205e;
-}
-
-.rud-admission-notice .rud-container {
-  width: 100%;
-  max-width: none;
-  display: grid;
-  grid-template-columns: 225px 1fr;
-  align-items: stretch;
-}
-
-.rud-admission-notice h2 {
-  margin: 0;
-  min-height: 50px;
-  background: #ed1c24;
-  color: #fff;
-  display: grid;
-  place-items: center;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 16px;
-}
-
-.rud-notice-text {
-  min-width: 0;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-}
-
-.rud-admission-notice p {
-  margin: 0;
-  line-height: 1;
-  white-space: nowrap;
-  font-family: Georgia, "Times New Roman", serif;
-  font-weight: 700;
-  font-size: 15px;
-  display: block;
-  padding-left: 100%;
-  animation: rudNoticeTicker 24s linear infinite;
-}
-
-.rud-notice-text:hover p {
-  animation-play-state: paused;
-}
-
-@keyframes rudNoticeTicker {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
-}
-
-.rud-news-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 24px;
-  padding: 42px 0;
-}
-
-.rud-news-grid article {
-  border: 1px solid #e4e4e4;
-  padding: 22px;
-  border-top: 4px solid #27205e;
-}
-
-.rud-news-grid ul {
-  padding-left: 18px;
-  line-height: 2;
-}
-
-.rud-news-grid a {
-  color: #222;
-}
-
-.rud-more-link {
-  color: #fff !important;
-}
-
-.rud-news-board {
-  background: #f4f4f4;
-  padding: 33px 0 50px;
-  font-family: Georgia, "Times New Roman", serif;
-}
-
-.rud-board-tabs {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 5px;
-  margin-bottom: 22px;
-}
-
-.rud-board-tabs a {
-  border: 1px solid #272260;
-  color: #272260;
-  background: #fff;
-  padding: 15px 18px;
-  text-decoration: none;
-  font-size: 22px;
-  font-weight: 700;
-}
-
-.rud-board-tabs a.active {
-  background: #272260;
-  color: #fff;
-}
-
-.rud-news-board h2 {
-  color: #ed1c24;
-  font-size: 42px;
-  margin: 0 0 36px;
-}
-
-.rud-notice-cards {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px 24px;
-}
-
-.rud-notice-card {
-  min-height: 140px;
-  background: #fff;
-  display: grid;
-  grid-template-columns: 124px 1fr;
-  align-items: center;
-  padding: 16px 18px;
-  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.04);
-}
-
-.rud-date {
-  min-height: 70px;
-  border-right: 1px solid #999;
-  display: grid;
-  place-items: center;
-  align-content: center;
-  gap: 4px;
-}
-
-.rud-date strong {
-  font-size: 38px;
-  line-height: 1;
-}
-
-.rud-date span {
-  display: block;
-  font-size: 20px;
-  line-height: 1;
-}
-
-.rud-notice-card h3 {
-  color: #000;
-  font-size: 25px;
-  line-height: 1.12;
-  margin: 0 0 8px;
-}
-
-.rud-notice-card div:last-child {
-  padding-left: 16px;
-}
-
-.rud-notice-card a {
-  color: #ed1c24;
-  text-decoration: none;
-  font-size: 21px;
-  border-bottom: 1px solid #ed1c24;
-}
-
-.rud-notice-card a::after {
-  content: "›";
-  margin-left: 10px;
-  font-size: 34px;
-  line-height: 0;
-  vertical-align: -4px;
-}
-
-.rud-view-all-notice {
-  text-align: center;
-  margin-top: 28px;
-}
-
-.rud-view-all-notice a {
-  color: #000;
-  text-decoration: none;
-  font-size: 12px;
-  font-weight: 700;
-}
-
-.rud-view-all-notice span {
-  color: #272260;
-  font-size: 16px;
-  margin-left: 8px;
-}
-
-.rud-welcome {
-  background: #f4f4f4;
-  padding: 46px 0 30px;
-  font-family: Georgia, "Times New Roman", serif;
-}
-
-.rud-welcome .rud-container {
-  display: grid;
-  grid-template-columns: minmax(0, 0.8fr) minmax(320px, 1fr);
-  gap: 42px;
-  align-items: center;
-}
-
-.rud-welcome p {
-  line-height: 1.55;
-  font-size: 12px;
-}
-
-.rud-welcome h2,
-.rud-founder h2 {
-  color: #ed1c24;
-  font-size: 26px;
-  line-height: 1.1;
-  margin: 0 0 18px;
-}
-
-.rud-welcome a,
-.rud-founder a {
-  background: #ed1c24;
-  color: #fff;
-  border-radius: 20px;
-  padding: 9px 18px;
-  font-size: 12px;
-  text-decoration: none;
-  font-weight: 700;
-}
-
-.rud-welcome-photo {
-  position: relative;
-  padding-top: 54px;
-}
-
-.rud-welcome-photo img {
-  width: 100%;
-  border-radius: 8px;
-  display: block;
-}
-
-.rud-stats {
-  position: absolute;
-  left: 0;
-  top: 0;
-  background: #ed1c24;
-  color: #fff;
-  display: flex;
-  min-width: 256px;
-  min-height: 64px;
-  align-items: center;
-  justify-content: center;
-  z-index: 2;
-}
-
-.rud-stats strong {
-  padding: 0 28px;
-  font-size: 27px;
-  line-height: 1;
-}
-
-.rud-stats strong + strong {
-  border-left: 1px solid #fff;
-}
-
-.rud-stats span {
-  display: block;
-  font-size: 14px;
-  margin-top: 8px;
-}
-
-.rud-founder,
-.rud-chairman {
-  background: #f4f4f4;
-  padding: 30px 0 38px;
-  font-family: Georgia, "Times New Roman", serif;
-}
-
-.rud-founder .rud-container,
-.rud-chairman .rud-container {
-  display: grid;
-  grid-template-columns: minmax(0, 0.8fr) minmax(320px, 1fr);
-  gap: 42px;
-  align-items: center;
-}
-
-.rud-chairman {
-  background: #fff;
-  padding: 32px 0 48px;
-}
-
-.rud-chairman .rud-container {
-  grid-template-columns: minmax(360px, 0.9fr) minmax(360px, 1fr);
-  gap: 28px;
-}
-
-.rud-founder p,
-.rud-chairman p {
-  line-height: 1.55;
-  font-size: 14px;
-}
-
-.rud-founder figure,
-.rud-chairman figure {
-  margin: 0;
-  text-align: center;
-}
-
-.rud-founder figure img,
-.rud-chairman figure img {
-  width: 100%;
-  border-radius: 4px;
-  display: block;
-}
-
-.rud-chairman figure img {
-  height: 318px;
-  object-fit: cover;
-}
-
-.rud-founder figcaption,
-.rud-chairman figcaption {
-  margin-top: 10px;
-  color: #000;
-}
-
-.rud-founder figcaption strong,
-.rud-founder figcaption span,
-.rud-chairman figcaption strong,
-.rud-chairman figcaption span {
-  display: block;
-}
-
-.rud-founder figcaption span,
-.rud-chairman figcaption span {
-  color: #ed1c24;
-  font-size: 11px;
-  font-style: italic;
-}
-
-.rud-chairman h2 {
-  color: #ed1c24;
-  font-size: 30px;
-  line-height: 1.1;
-  margin: 0 0 18px;
-}
-
-.rud-chairman a {
-  background: #ed1c24;
-  color: #fff;
-  border-radius: 20px;
-  padding: 10px 24px;
-  font-size: 13px;
-  text-decoration: none;
-  font-weight: 700;
-  display: inline-block;
-  margin-top: 8px;
-}
-
-.rud-portal-links {
-  background: #f4f4f4;
-  padding: 50px 0 48px;
-  font-family: Georgia, "Times New Roman", serif;
-}
-
-.rud-portal-links .rud-container {
-  display: grid;
-  grid-template-columns: minmax(420px, 1fr) minmax(330px, 0.9fr);
-  gap: 38px;
-  align-items: start;
-}
-
-.rud-portal-links h2 {
-  margin: 0;
-  padding: 0 36px 0 0;
-  color: #000;
-  font-size: 40px;
-  line-height: 1.24;
-  font-weight: 700;
-  border-right: 1px solid #111;
-}
-
-.rud-portal-login-list {
-  display: grid;
-  gap: 62px;
-}
-
-.rud-portal-links article {
-  min-height: auto;
-  background: transparent;
-  color: #000;
-  padding: 0;
-  display: block;
-}
-
-.rud-portal-links article h3 {
-  margin: 0 0 46px;
-  color: #000;
-  font-size: 34px;
-  line-height: 1;
-  font-weight: 700;
-}
-
-.rud-portal-links article a {
-  min-width: 230px;
-  text-align: center;
-  background: #ed1c24;
-  color: #fff;
-  border-radius: 34px;
-  padding: 17px 34px;
-  font-size: 22px;
-  line-height: 1;
-  text-decoration: none;
-  font-weight: 700;
-}
-
-.rud-campus-slider {
-  position: relative;
-  width: min(1164px, calc(100% - 44px));
-  height: clamp(190px, 25vw, 304px);
-  margin: 0 auto 38px;
-  overflow: hidden;
-  border-radius: 12px;
-  background: #f4f4f4;
-}
-
-.rud-campus-slide {
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  transform: translateX(24px);
-  transition: opacity 700ms ease, transform 700ms ease;
-  pointer-events: none;
-}
-
-.rud-campus-slide.is-active {
-  opacity: 1;
-  transform: translateX(0);
-  pointer-events: auto;
-}
-
-.rud-campus-slide img {
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: cover;
-}
-
-.rud-campus-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 2;
-  width: 50px;
-  height: 68px;
-  border: 0;
-  background: transparent;
-  color: rgba(255, 255, 255, 0.92);
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 60px;
-  line-height: 1;
-  cursor: pointer;
-}
-
-.rud-campus-prev {
-  left: 68px;
-}
-
-.rud-campus-next {
-  right: 68px;
-}
-
-.rud-campus-arrow:hover {
-  color: #fff;
-}
-
-.rud-apply-banner {
-  min-height: 468px;
-  margin: 0 0 42px;
-  background:
-    linear-gradient(rgba(27, 47, 94, 0.6), rgba(27, 47, 94, 0.6)),
-    url("https://www.royal.edu.bd/wp-content/themes/rudtheme/images/campus-life/campus2.png") center/cover no-repeat;
-  display: grid;
-  place-items: center;
-  font-family: Georgia, "Times New Roman", serif;
-  text-align: center;
-}
-
-.rud-apply-overlay img {
-  width: 96px;
-  height: 96px;
-  object-fit: contain;
-  display: block;
-  margin: 0 auto 28px;
-}
-
-.rud-apply-overlay h2 {
-  margin: 0;
-  color: #fff;
-  font-size: 38px;
-  line-height: 1.18;
-  font-weight: 700;
-}
-
-.rud-apply-overlay a {
-  display: inline-block;
-  margin-top: 46px;
-  min-width: 164px;
-  background: #ed1c24;
-  color: #fff;
-  border-radius: 28px;
-  padding: 16px 30px;
-  text-decoration: none;
-  font-size: 18px;
-  font-weight: 700;
-}
-
-.rud-programs {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 10px 0 44px;
-  font-family: Georgia, "Times New Roman", serif;
-}
-
-.rud-programs h2 {
-  margin: 0 0 32px;
-  color: #ed1c24;
-  font-size: 34px;
-  line-height: 1;
-}
-
-.rud-program-slider {
-  overflow: hidden;
-}
-
-.rud-program-track {
-  display: flex;
-  gap: 12px;
-  transition: transform 600ms ease;
-}
-
-.rud-program-card {
-  flex: 0 0 calc((100% - 24px) / 3);
-  background: #fff;
-}
-
-.rud-program-card img {
-  width: 100%;
-  height: 282px;
-  display: block;
-  object-fit: cover;
-}
-
-.rud-program-card div {
-  min-height: 134px;
-  padding: 24px 24px 22px;
-}
-
-.rud-program-card h3 {
-  margin: 0 0 18px;
-  color: #000;
-  font-size: 23px;
-  line-height: 1.05;
-  font-weight: 700;
-}
-
-.rud-program-card a {
-  text-decoration: none;
-}
-
-.rud-program-card div a {
-  color: #ed1c24;
-  font-size: 17px;
-}
-
-.rud-program-card div a::after {
-  content: "›";
-  margin-left: 10px;
-  font-size: 32px;
-  line-height: 0;
-  vertical-align: -5px;
-}
-
-.rud-program-controls {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  margin-top: 18px;
-}
-
-.rud-program-controls button {
-  width: 28px;
-  height: 28px;
-  border: 0;
-  border-radius: 50%;
-  background: #ed1c24;
-  color: #fff;
-  font-size: 24px;
-  line-height: 22px;
-  font-weight: 700;
-  cursor: pointer;
-}
-
-.rud-program-controls span {
-  width: 16px;
-  height: 6px;
-  border-radius: 99px;
-  background: #d9d9d9;
-}
-
-.rud-program-controls span.is-active {
-  width: 42px;
-  background: #27205e;
-}
-
-.rud-events {
-  max-width: 1095px;
-  margin: 0 auto;
-  padding: 8px 0 48px;
-  font-family: Georgia, "Times New Roman", serif;
-}
-
-.rud-events h2 {
-  margin: 0 0 18px;
-  color: #ed1c24;
-  font-size: 24px;
-  line-height: 1;
-}
-
-.rud-events-grid {
-  display: grid;
-  grid-template-columns: 160px minmax(300px, 1fr) 160px;
-  gap: 16px;
-  align-items: start;
-}
-
-.rud-events-side {
-  display: grid;
-  gap: 28px;
-}
-
-.rud-event-card img,
-.rud-event-feature img {
-  width: 100%;
-  display: block;
-  object-fit: cover;
-}
-
-.rud-event-card img {
-  height: 100px;
-}
-
-.rud-event-feature img {
-  height: 250px;
-}
-
-.rud-event-card a,
-.rud-event-feature a {
-  text-decoration: none;
-}
-
-.rud-event-card time,
-.rud-event-feature time {
-  display: block;
-  margin: 12px 0 12px;
-  color: #222;
-  font-size: 8px;
-}
-
-.rud-event-card time::before,
-.rud-event-feature time::before {
-  content: "⊞";
-  margin-right: 4px;
-  color: #333;
-}
-
-.rud-event-card h3,
-.rud-event-feature h3 {
-  margin: 0;
-  color: #000;
-  font-weight: 700;
-}
-
-.rud-event-card h3 {
-  font-size: 14px;
-  line-height: 1.1;
-}
-
-.rud-event-feature {
-  text-align: center;
-}
-
-.rud-event-feature h3 {
-  font-size: 22px;
-  line-height: 1.18;
-}
-
-.rud-event-more {
-  display: inline-block;
-  margin-top: 14px;
-  color: #ed1c24;
-  font-size: 12px;
-}
-
-.rud-event-more::after {
-  content: "›";
-  margin-left: 8px;
-  font-size: 22px;
-  line-height: 0;
-  vertical-align: -4px;
-}
-
-.rud-view-all-news {
-  display: block;
-  margin-top: 20px;
-  color: #000;
-  font-size: 12px;
-  font-weight: 700;
-}
-
-.rud-view-all-news span {
-  margin-left: 8px;
-}
-
-.rud-footer {
-  position: relative;
-  background:
-    linear-gradient(rgba(5, 62, 105, 0.9), rgba(5, 62, 105, 0.9)),
-    url("https://www.royal.edu.bd/wp-content/themes/rudtheme/images/footer-bg.jpg") center/cover no-repeat;
-  color: #fff;
-  margin-top: 72px;
-  min-height: 620px;
-  padding: 190px 0 56px;
-  overflow: hidden;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-.rud-footer::before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: -245px;
-  width: 1920px;
-  height: 410px;
-  transform: translateX(-50%);
-  background: #fff;
-  border-radius: 0 0 50% 50%;
-  z-index: 0;
-}
-
-.rud-footer-logo {
-  position: absolute;
-  top: 14px;
-  left: 50%;
-  width: 184px;
-  height: 184px;
-  transform: translateX(-50%);
-  z-index: 2;
-  object-fit: contain;
-}
-
-.rud-footer .rud-container {
-  position: relative;
-  z-index: 1;
-  display: grid;
-  grid-template-columns: 1.8fr 1fr 1.05fr 1.75fr;
-  gap: 58px;
-  max-width: 1140px;
-}
-
-.rud-footer h3 {
-  margin: 0 0 30px;
-  color: #fff;
-  font-size: 23px;
-  line-height: 1.22;
-  font-weight: 700;
-}
-
-.rud-footer-contact h3 {
-  font-size: 38px;
-  line-height: 1.15;
-}
-
-.rud-footer-contact p {
-  margin: 30px 0;
-}
-
-.rud-footer-contact p small,
-.rud-footer-contact p strong {
-  display: block;
-  color: #fff;
-}
-
-.rud-footer-contact p small {
-  margin-bottom: 8px;
-  font-size: 14px;
-  font-weight: 400;
-  letter-spacing: 0;
-}
-
-.rud-footer-contact p strong {
-  max-width: 390px;
-  font-size: 21px;
-  line-height: 1.28;
-  font-weight: 700;
-}
-
-.rud-footer-socials {
-  display: flex;
-  gap: 18px;
-  margin-top: 92px;
-}
-
-.rud-footer a {
-  color: #fff;
-}
-
-.rud-footer-socials a {
-  width: 36px;
-  height: 36px;
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
-  background: #fff;
-  color: #073e68;
-  font-size: 15px;
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: 700;
-}
-
-.rud-footer-links a {
-  display: block;
-  margin-bottom: 24px;
-  color: #fff;
-  font-size: 20px;
-  line-height: 1.28;
-  font-weight: 400;
-}
-
-.rud-copy {
-  position: relative;
-  z-index: 1;
-  max-width: 1140px;
-  margin: 76px auto 0;
-  padding-top: 24px;
-  border-top: 1px solid rgba(255, 255, 255, 0.28);
-  color: #fff;
-  text-align: right;
-  font-size: 18px;
-  font-weight: 700;
-}
-
-.rud-popup {
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  background: rgba(0, 0, 0, 0.78);
-  display: grid;
-  place-items: start center;
-  padding-top: 38px;
-}
-
-.rud-popup.is-hidden {
-  display: none;
-}
-
-.rud-popup-card {
-  width: min(553px, calc(100vw - 44px));
-  background: transparent;
-}
-
-.rud-popup-card img {
-  width: 100%;
-  display: block;
-}
-
-.rud-popup-close,
-.rud-popup-search {
-  position: fixed;
-  top: 8px;
-  border: 0;
-  background: transparent;
-  color: #fff;
-  font-size: 34px;
-  line-height: 1;
-  z-index: 10000;
-}
-
-.rud-popup-search {
-  right: 48px;
-  font-size: 26px;
-}
-
-.rud-popup-close {
-  right: 11px;
-}
-
-@media (max-width: 900px) {
-  .rud-news-grid,
-  .rud-notice-cards,
-  .rud-welcome .rud-container,
-  .rud-founder .rud-container,
-  .rud-chairman .rud-container,
-  .rud-portal-links .rud-container,
-  .rud-footer .rud-container {
-    grid-template-columns: 1fr;
-  }
-
-  .rud-portal-links h2 {
-    border-right: 0;
-    padding-right: 0;
-    font-size: 32px;
-  }
-
-  .rud-portal-login-list {
-    gap: 34px;
-  }
-
-  .rud-apply-banner {
-    min-height: 360px;
-  }
-
-  .rud-apply-overlay h2 {
-    font-size: 30px;
-  }
-
-  .rud-programs {
-    width: calc(100% - 32px);
-  }
-
-  .rud-program-card {
-    flex-basis: calc((100% - 12px) / 2);
-  }
-
-  .rud-events {
-    width: calc(100% - 32px);
-  }
-
-  .rud-events-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .rud-events-side {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .rud-footer .rud-container {
-    max-width: calc(100% - 48px);
-    gap: 28px;
-  }
-
-  .rud-footer-contact h3 {
-    font-size: 32px;
-  }
-
-  .rud-footer-links a {
-    font-size: 17px;
-  }
-
-  .rud-logo-row .rud-container {
-    align-items: flex-start;
-    flex-direction: column;
-    padding: 16px 0;
-  }
-
-  .rud-brand-image {
-    min-height: auto;
-    padding-right: 0;
-  }
-
-  .rud-logo-row img {
-    max-width: min(100%, 560px);
-    transform: none;
-  }
-
-  .rud-header-actions {
-    min-width: 100%;
-    min-height: 78px;
-    justify-content: center;
-    padding: 12px;
-    gap: 12px;
-  }
-
-  .rud-header-actions::before {
-    display: none;
-  }
-
-  .rud-academics-menu {
-    left: 0;
-    right: 0;
-    transform: none;
-    width: min(100vw, 720px);
+function showProfile(student) {
+  const profile = document.querySelector("#classicProfile");
+  document.body.classList.add("portal-open");
+  document.querySelector("#classicLoginCard").hidden = true;
+  document.querySelector(".student-alert").hidden = true;
+  profile.hidden = false;
+
+  const photo = student.photo
+    ? `<img src="${student.photo}" alt="${student.name}">`
+    : `<span class="student-no-photo">No Image</span>`;
+
+  window.currentPortalStudent = student;
+  window.currentPortalPhoto = photo;
+
+  profile.innerHTML = `
+    <header class="portal-topbar">
+      <div class="portal-logo-wrap">
+        <img src="assets/rud-logo.png" alt="RUD logo">
+        <div><strong>RUD</strong><span>PORTAL</span></div>
+      </div>
+      <nav class="portal-menu">
+        <button type="button" data-portal-view="courses">Courses & Results</button>
+        <button type="button" data-portal-view="registration">Registration</button>
+        <button type="button" data-portal-view="grade">Grade Report</button>
+        <button type="button" data-portal-view="download">Download Form</button>
+        <strong>Welcome ${student.name}</strong>
+      </nav>
+      <div class="portal-user-icons">
+        <button class="bell" type="button" data-portal-view="notice">1</button>
+        <button class="user-dot" type="button" data-portal-view="logout">Logout</button>
+      </div>
+    </header>
+
+    <div class="portal-body">
+      <aside class="portal-side">
+        <button type="button" data-portal-view="courses">Academics <span>v</span></button>
+        <button type="button" data-portal-view="grade">Grade Reports <span>v</span></button>
+        <button type="button" data-portal-view="library">Library <span>v</span></button>
+        <button type="button" data-portal-view="payment">Payment Information <span>v</span></button>
+        <button class="active" type="button" data-portal-view="personal">Personal Information & Setting <span>^</span></button>
+        <button class="side-link active-link" type="button" data-portal-view="personal">Personal Information</button>
+        <button class="side-link" type="button" data-portal-view="password">Change Password</button>
+      </aside>
+
+      <main class="portal-content">
+        <div class="portal-section-title">Student Information</div>
+        <section class="student-info-card" id="portalContent"></section>
+      </main>
+    </div>
+  `;
+
+  bindPortalActions();
+  renderPortalView("personal");
+}
+
+function bindPortalActions() {
+  document.querySelectorAll("[data-portal-view]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const view = button.dataset.portalView;
+      if (view === "logout") {
+        logoutPortal();
+        return;
+      }
+      renderPortalView(view);
+    });
+  });
+}
+
+function renderPortalView(view) {
+  const student = window.currentPortalStudent;
+  const content = document.querySelector("#portalContent");
+  const titles = {
+    personal: "Student Information",
+    education: "Education Information",
+    courses: "Courses & Results",
+    registration: "Registration",
+    grade: "Grade Report",
+    download: "Download Form",
+    library: "Library",
+    payment: "Payment Information",
+    password: "Change Password",
+    notice: "Notice"
+  };
+
+  document.querySelector(".portal-section-title").textContent = titles[view] || "Student Information";
+  document.querySelectorAll(".side-link").forEach((item) => {
+    item.classList.toggle("active-link", item.dataset.portalView === view);
+  });
+
+  if (view === "personal") content.innerHTML = personalHtml(student, "general");
+  if (view === "education") content.innerHTML = personalHtml(student, "education");
+  if (view === "courses") content.innerHTML = simplePanel("Courses & Results", [
+    ["Course", "Principles of Management", "Completed"],
+    ["Course", "Business Communication", "Completed"],
+    ["Result", student.results || "No result added", "Published"]
+  ]);
+  if (view === "registration") content.innerHTML = simplePanel("Course Registration", [
+    ["Semester", "Spring 2026", "Open"],
+    ["Credit Limit", "15 Credits", "Eligible"],
+    ["Status", "No pending registration", "Ready"]
+  ]);
+  if (view === "grade") content.innerHTML = curriculumGradeReport(student);
+  if (view === "download") content.innerHTML = downloadPanel();
+  if (view === "library") content.innerHTML = simplePanel("Library", [
+    ["Library ID", student.id, "Active"],
+    ["Borrowed Books", "0", "Clear"]
+  ]);
+  if (view === "payment") content.innerHTML = simplePanel("Payment Information", [
+    ["Payment Status", student.payment || "Due", "Current"],
+    ["Last Update", "Demo data", "Local"]
+  ]);
+  if (view === "password") content.innerHTML = passwordPanel();
+  if (view === "notice") content.innerHTML = simplePanel("Notice", [
+    ["Notice", "Semester Final Result Published", "New"],
+    ["Reminder", "Please clear due payments before registration.", "Info"]
+  ]);
+
+  document.querySelectorAll("[data-tab]").forEach((tab) => {
+    tab.addEventListener("click", () => renderPortalView(tab.dataset.tab));
+  });
+
+  const passwordForm = document.querySelector("#portalPasswordForm");
+  if (passwordForm) passwordForm.addEventListener("submit", changePassword);
+
+  const printButton = document.querySelector("#printCurriculum");
+  if (printButton) printButton.addEventListener("click", () => window.print());
+
+  const gradeForm = document.querySelector("#curriculumGradeForm");
+  if (gradeForm) gradeForm.addEventListener("submit", saveCurriculumReport);
+
+  const addCourseButton = document.querySelector("#addCurriculumCourse");
+  if (addCourseButton) addCourseButton.addEventListener("click", addCurriculumCourseRow);
+
+  document.querySelectorAll("[data-remove-course]").forEach((button) => {
+    button.addEventListener("click", () => button.closest("tr").remove());
+  });
+}
+
+function personalHtml(student, activeTab) {
+  const educationRows = (student.education || []).map((row) => `
+    <tr>
+      <td>${row.exam || ""}</td>
+      <td>${row.group || ""}</td>
+      <td>${row.institute || ""}</td>
+      <td>${row.year || ""}</td>
+      <td>${row.division || ""}</td>
+      <td>${row.marks || ""}</td>
+    </tr>
+  `).join("") || `<tr><td colspan="6">No education information added.</td></tr>`;
+
+  return `
+    <div class="student-photo">${window.currentPortalPhoto}</div>
+    <div class="info-lines primary-info">
+      ${line("Student ID", student.id)}
+      ${line("Name", student.name)}
+      ${line("Blood Group", student.bloodGroup)}
+      ${line("National ID", student.nationalId)}
+      ${line("Date of Birth", formatDate(student.dob))}
+      ${line("Birth Place", student.birthPlace)}
+    </div>
+
+    <div class="detail-box detail-left">
+      ${line("Father's Name", student.fatherName)}
+      ${line("Mother's Name", student.motherName)}
+      ${line("Religion", student.religion)}
+      ${line("Program", student.program)}
+    </div>
+
+    <div class="detail-box detail-right">
+      ${line("Study Year", student.studyYear)}
+      ${line("Batch No.", student.batch)}
+      ${line("Section", student.section)}
+      ${line("Status", student.status)}
+      ${line("Admission Date", formatDate(student.admissionDate))}
+    </div>
+
+    <div class="portal-tabs">
+      <button class="${activeTab === "general" ? "active" : ""}" type="button" data-tab="personal">General Info</button>
+      <button class="${activeTab === "education" ? "active" : ""}" type="button" data-tab="education">Education</button>
+    </div>
+
+    ${activeTab === "general" ? `
+      <div class="address-box">
+        <h3>Present and Permanent Address</h3>
+        ${line("Permanent Address", student.permanentAddress)}
+        ${line("Present Address", student.presentAddress)}
+        ${line("Mobile", student.mobile)}
+        ${line("Guardian Phone", student.guardianPhone)}
+        ${line("Email", student.email)}
+      </div>
+    ` : `
+      <div class="address-box">
+        <h3>Education History</h3>
+        <table class="portal-table">
+          <thead><tr><th>Exam</th><th>Group</th><th>Institute</th><th>Pass Year</th><th>Division</th><th>Marks</th></tr></thead>
+          <tbody>${educationRows}</tbody>
+        </table>
+      </div>
+    `}
+  `;
+}
+
+function simplePanel(title, rows) {
+  return `
+    <div class="portal-wide-panel">
+      <h3>${title}</h3>
+      ${rows.map((row) => `
+        <div class="portal-row-card">
+          <b>${row[0]}</b>
+          <span>${row[1]}</span>
+          <em>${row[2]}</em>
+        </div>
+      `).join("")}
+    </div>
+  `;
+}
+
+function curriculumGradeReport(student) {
+  const courses = student.curriculumCourses || [
+    { code: "BUS-101", title: "Introduction to Business", credit: "3", grade: "A-", status: "Completed" },
+    { code: "ENG-101", title: "Business English", credit: "3", grade: "B+", status: "Completed" },
+    { code: "ACC-101", title: "Principles of Accounting", credit: "3", grade: "A", status: "Completed" }
+  ];
+  return `
+    <form class="curriculum-report" id="curriculumGradeForm">
+      <div class="curriculum-header">
+        <h3>Curriculum Grade Report</h3>
+        <div class="curriculum-actions">
+          <button type="button" id="addCurriculumCourse">Add Row</button>
+          <button type="submit">Save</button>
+          <button type="button" id="printCurriculum">Print</button>
+        </div>
+      </div>
+      <table class="curriculum-info-table">
+        <tbody>
+          <tr>
+            <td>Student ID</td><td>:</td><td><input name="id" value="${student.id || ""}"></td>
+            <td>Core</td><td>:</td><td><input name="core" value="${student.core || "BBA(EVE)"}"></td>
+          </tr>
+          <tr>
+            <td>Student Name</td><td>:</td><td><input name="name" value="${student.name || ""}"></td>
+            <td>Major</td><td>:</td><td><input name="major" value="${student.major || ""}"></td>
+          </tr>
+          <tr>
+            <td>Registered Credits</td><td>:</td><td><input name="registeredCredits" value="${student.registeredCredits || "-"}"></td>
+            <td>Second Major</td><td>:</td><td><input name="secondMajor" value="${student.secondMajor || ""}"></td>
+          </tr>
+          <tr>
+            <td>Completed Credits</td><td>:</td><td><input name="completedCredit" value="${student.completedCredit || student.completedCredits || "-"}"></td>
+            <td>Minor</td><td>:</td><td><input name="minor" value="${student.minor || ""}"></td>
+          </tr>
+          <tr>
+            <td>CGPA</td><td>:</td><td><input name="cgpa" value="${student.cgpa || "-"}"></td>
+            <td></td><td></td><td></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h4>Core Curriculum</h4>
+      <table class="curriculum-course-table">
+        <thead>
+          <tr>
+            <th>Course Code</th>
+            <th>Course Title</th>
+            <th>Credit</th>
+            <th>Grade</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${courses.map((course) => curriculumCourseRow(course)).join("")}
+        </tbody>
+      </table>
+      <p class="curriculum-save-message" id="curriculumSaveMessage"></p>
+    </form>
+  `;
+}
+
+function curriculumCourseRow(course = {}) {
+  return `
+    <tr>
+      <td><input name="courseCode" value="${course.code || ""}" placeholder="BUS-101"></td>
+      <td><input name="courseTitle" value="${course.title || ""}" placeholder="Course title"></td>
+      <td><input name="courseCredit" value="${course.credit || ""}" placeholder="3"></td>
+      <td><input name="courseGrade" value="${course.grade || ""}" placeholder="A"></td>
+      <td>
+        <input name="courseStatus" value="${course.status || ""}" placeholder="Completed">
+        <button type="button" class="remove-course" data-remove-course>Remove</button>
+      </td>
+    </tr>
+  `;
+}
+
+function addCurriculumCourseRow() {
+  document.querySelector(".curriculum-course-table tbody").insertAdjacentHTML("beforeend", curriculumCourseRow());
+  document.querySelectorAll("[data-remove-course]").forEach((button) => {
+    button.onclick = () => button.closest("tr").remove();
+  });
+  const rows = document.querySelectorAll(".curriculum-course-table tbody tr");
+  const lastRow = rows[rows.length - 1];
+  lastRow?.querySelector("input")?.focus();
+  const message = document.querySelector("#curriculumSaveMessage");
+  if (message) {
+    message.textContent = "New course row added. Fill the row and press Save.";
+    message.classList.remove("error");
   }
 }
 
-@media (max-width: 560px) {
-  .rud-top-strip .rud-container {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 8px;
-    padding: 10px 0;
+async function saveCurriculumReport(event) {
+  event.preventDefault();
+  const form = event.currentTarget;
+  const student = window.currentPortalStudent;
+  if (!form.elements.id.value.trim() || !form.elements.name.value.trim()) {
+    const message = document.querySelector("#curriculumSaveMessage");
+    message.textContent = "Student ID and Student Name cannot be empty.";
+    message.classList.add("error");
+    return;
   }
-
-  .rud-top-links,
-  .rud-socials,
-  .rud-header-actions {
-    flex-wrap: wrap;
+  const courses = [...form.querySelectorAll(".curriculum-course-table tbody tr")].map((row) => ({
+    code: row.querySelector('[name="courseCode"]').value.trim(),
+    title: row.querySelector('[name="courseTitle"]').value.trim(),
+    credit: row.querySelector('[name="courseCredit"]').value.trim(),
+    grade: row.querySelector('[name="courseGrade"]').value.trim(),
+    status: row.querySelector('[name="courseStatus"]').value.trim()
+  }));
+  const updated = {
+    ...student,
+    id: form.elements.id.value.trim(),
+    name: form.elements.name.value.trim(),
+    core: form.elements.core.value.trim(),
+    major: form.elements.major.value.trim(),
+    secondMajor: form.elements.secondMajor.value.trim(),
+    registeredCredits: form.elements.registeredCredits.value.trim(),
+    completedCredit: form.elements.completedCredit.value.trim(),
+    minor: form.elements.minor.value.trim(),
+    cgpa: form.elements.cgpa.value.trim(),
+    curriculumCourses: courses
+  };
+  const allStudents = students().map((item) => item.id === student.id ? updated : item);
+  saveStudents(allStudents);
+  if (window.RudBackend?.enabled) {
+    try {
+      await window.RudBackend.upsertStudent(updated);
+    } catch (error) {
+      console.error(error);
+      const errorMessage = document.querySelector("#curriculumSaveMessage");
+      errorMessage.textContent = "Saved locally. Supabase save failed.";
+      errorMessage.classList.add("error");
+      return;
+    }
   }
-
-  .rud-main-nav a {
-    padding: 12px 10px;
-    font-size: 15px;
-  }
-
-  .rud-action-circle {
-    width: 44px;
-    height: 44px;
-    font-size: 24px;
-  }
-
-  .rud-admission-btn {
-    min-width: auto;
-    padding: 13px 16px;
-  }
-
-  .rud-slide-text h1 {
-    font-size: 34px;
-  }
-
-  .rud-slide-text p {
-    font-size: 24px;
-  }
-
-  .rud-slide-text {
-    left: 7%;
-    right: 7%;
-  }
-
-  .rud-program-card {
-    flex-basis: 100%;
-  }
-
-  .rud-program-card img {
-    height: 230px;
-  }
-
-  .rud-programs h2 {
-    font-size: 30px;
-  }
-
-  .rud-events-side {
-    grid-template-columns: 1fr;
-  }
-
-  .rud-event-feature img {
-    height: 220px;
-  }
-
-  .rud-footer {
-    min-height: auto;
-    padding-top: 120px;
-  }
-
-  .rud-footer-logo {
-    top: 34px;
-    width: 104px;
-    height: 104px;
-  }
-
-  .rud-copy {
-    text-align: center;
-    margin-left: 24px;
-    margin-right: 24px;
-    font-size: 14px;
-  }
-
-  .rud-footer-socials {
-    margin-top: 36px;
-  }
+  window.currentPortalStudent = updated;
+  const message = document.querySelector("#curriculumSaveMessage");
+  message.textContent = "Curriculum Grade Report saved successfully.";
+  message.classList.remove("error");
+  alert("Curriculum Grade Report saved successfully.");
 }
 
-@media print {
-  .portal-topbar,
-  .portal-side,
-  .portal-section-title,
-  .curriculum-header button {
-    display: none !important;
-  }
-
-  .portal-body {
-    display: block;
-  }
-
-  .portal-content {
-    padding: 0;
-  }
-
-  .student-info-card,
-  .curriculum-report {
-    border: 0;
-    min-height: auto;
-  }
+function downloadPanel() {
+  return `
+    <div class="portal-wide-panel">
+      <h3>Download Form</h3>
+      <button type="button" onclick="window.print()">Print Student Information</button>
+      <button type="button" onclick="alert('Demo: Registration form download')">Registration Form</button>
+      <button type="button" onclick="alert('Demo: Payment slip download')">Payment Slip</button>
+    </div>
+  `;
 }
 
-@media (max-width: 980px) {
-  .app-shell {
-    grid-template-columns: 1fr;
-  }
-
-  .sidebar {
-    position: static;
-  }
-
-  .nav-list {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .metric-grid,
-  .content-grid,
-  .portal-grid,
-  .phase-grid {
-    grid-template-columns: 1fr;
-  }
+function passwordPanel() {
+  return `
+    <form class="portal-password-form" id="portalPasswordForm">
+      <label>Current Password<input id="currentPassword" type="password" required></label>
+      <label>New Password<input id="newPassword" type="password" required></label>
+      <label>Confirm Password<input id="confirmPassword" type="password" required></label>
+      <button type="submit">Change Password</button>
+      <p id="passwordMessage"></p>
+    </form>
+  `;
 }
 
-@media (max-width: 640px) {
-  .main-panel,
-  .sidebar {
-    padding: 16px;
+async function changePassword(event) {
+  event.preventDefault();
+  const current = document.querySelector("#currentPassword").value.trim();
+  const next = document.querySelector("#newPassword").value.trim();
+  const confirm = document.querySelector("#confirmPassword").value.trim();
+  const message = document.querySelector("#passwordMessage");
+  const student = window.currentPortalStudent;
+
+  if (current !== student.key) {
+    message.textContent = "Current password is not correct.";
+    return;
+  }
+  if (next !== confirm) {
+    message.textContent = "New password and confirm password do not match.";
+    return;
   }
 
-  .topbar,
-  .panel-heading,
-  .photo-row {
-    align-items: stretch;
-    flex-direction: column;
+  const updated = { ...student, key: next };
+  const allStudents = students().map((item) => item.id === student.id ? updated : item);
+  saveStudents(allStudents);
+  if (window.RudBackend?.enabled) {
+    try {
+      await window.RudBackend.upsertStudent(updated);
+    } catch (error) {
+      console.error(error);
+      message.textContent = "Password changed locally. Supabase save failed.";
+      return;
+    }
   }
-
-  .form-grid,
-  .info-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .top-actions,
-  .filter-row {
-    width: 100%;
-  }
-
-  .top-actions button,
-  .filter-row input,
-  .filter-row select {
-    flex: 1 1 100%;
-  }
-
-  .classic-brand {
-    grid-template-columns: 1fr;
-    justify-items: center;
-    text-align: center;
-  }
-
-  .classic-divider {
-    display: none;
-  }
-
-  .classic-profile-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .portal-topbar,
-  .portal-menu {
-    align-items: flex-start;
-    flex-direction: column;
-    height: auto;
-    white-space: normal;
-  }
-
-  .portal-body,
-  .student-info-card {
-    grid-template-columns: 1fr;
-  }
-
-  .portal-side,
-  .portal-side button,
-  .portal-side a {
-    width: 100%;
-  }
-
-  .detail-left,
-  .detail-right,
-  .portal-tabs,
-  .address-box {
-    grid-column: 1;
-  }
+  window.currentPortalStudent = updated;
+  message.textContent = "Password changed successfully.";
 }
+
+function logoutPortal() {
+  document.body.classList.remove("portal-open");
+  document.querySelector(".student-alert").hidden = false;
+  document.querySelector("#classicLoginCard").hidden = false;
+  document.querySelector("#classicProfile").hidden = true;
+  document.querySelector("#classicLoginForm").reset();
+}
+
+function line(label, value) {
+  return `<p><b>${label}</b><span>:</span><em>${value || ""}</em></p>`;
+}
+
+function formatDate(value) {
+  if (!value) return "";
+  const date = new Date(`${value}T00:00:00`);
+  if (Number.isNaN(date.getTime())) return value;
+  return date.toLocaleDateString("en-GB");
+}
+
+document.querySelector("#classicLoginForm").addEventListener("submit", async (event) => {
+  event.preventDefault();
+  await studentsReady;
+  const userId = document.querySelector("#classicUserId").value.trim();
+  const password = document.querySelector("#classicPassword").value.trim();
+  const student = students().find((item) => {
+    return (item.id === userId || item.email?.toLowerCase() === userId.toLowerCase()) && item.key === password;
+  });
+
+  if (!student) {
+    document.querySelector("#classicError").textContent = "Invalid User ID or Password.";
+    return;
+  }
+
+  document.querySelector("#classicError").textContent = "";
+  showProfile(student);
+});
+
+studentsReady = loadStudents();
