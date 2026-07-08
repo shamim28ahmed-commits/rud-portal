@@ -86,6 +86,8 @@ function showProfile(student) {
         <img src="assets/rud-logo.png" alt="RUD logo">
         <div><strong>RUD</strong><span>PORTAL</span></div>
       </div>
+      <button class="portal-round portal-quick-toggle" type="button" aria-label="Toggle quick menu">⌃</button>
+      <button class="portal-round portal-side-toggle" type="button" aria-label="Toggle side menu">☰</button>
       <nav class="portal-menu">
         <button type="button" data-portal-view="courses">Courses & Results</button>
         <button type="button" data-portal-view="registration">Registration</button>
@@ -95,7 +97,12 @@ function showProfile(student) {
       </nav>
       <div class="portal-user-icons">
         <button class="bell" type="button" data-portal-view="notice">1</button>
-        <button class="user-dot" type="button" data-portal-view="logout">Logout</button>
+        <button class="user-dot portal-account-toggle" type="button" aria-label="User menu">●</button>
+        <div class="portal-account-menu">
+          <button type="button" data-portal-view="personal">User Profile</button>
+          <button type="button" data-portal-view="password">Change Password</button>
+          <button type="button" data-portal-view="logout">LogOut</button>
+        </div>
       </div>
     </header>
 
@@ -122,6 +129,21 @@ function showProfile(student) {
 }
 
 function bindPortalActions() {
+  document.querySelector(".portal-quick-toggle")?.addEventListener("click", () => {
+    document.body.classList.toggle("quick-open");
+    document.body.classList.remove("side-open", "account-open");
+  });
+
+  document.querySelector(".portal-side-toggle")?.addEventListener("click", () => {
+    document.body.classList.toggle("side-open");
+    document.body.classList.remove("quick-open", "account-open");
+  });
+
+  document.querySelector(".portal-account-toggle")?.addEventListener("click", () => {
+    document.body.classList.toggle("account-open");
+    document.body.classList.remove("quick-open", "side-open");
+  });
+
   document.querySelectorAll("[data-portal-view]").forEach((button) => {
     button.addEventListener("click", () => {
       const view = button.dataset.portalView;
@@ -129,6 +151,7 @@ function bindPortalActions() {
         logoutPortal();
         return;
       }
+      document.body.classList.remove("quick-open", "side-open", "account-open");
       renderPortalView(view);
     });
   });

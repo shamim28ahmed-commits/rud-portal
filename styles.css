@@ -914,6 +914,14 @@ tr:last-child td {
   z-index: 2;
 }
 
+.portal-round {
+  display: none;
+}
+
+.portal-account-menu {
+  display: none;
+}
+
 .bell {
   position: relative;
   color: #17146a;
@@ -1656,6 +1664,10 @@ tr:last-child td {
   text-decoration: none;
   position: relative;
   z-index: 1;
+}
+
+.rud-mobile-menu {
+  display: none;
 }
 
 .rud-main-nav {
@@ -2917,22 +2929,40 @@ tr:last-child td {
   }
 }
 
-@media (max-width: 560px) {
+@media (max-width: 760px) {
+  .rud-home-page {
+    overflow-x: hidden;
+  }
+
   .rud-container {
-    width: calc(100% - 20px);
+    width: 100%;
+  }
+
+  .rud-top-strip {
+    width: 100%;
   }
 
   .rud-top-strip .rud-container {
     align-items: center;
     flex-direction: column;
-    gap: 10px;
-    padding: 10px 0;
+    justify-content: center;
+    gap: 12px;
+    min-height: 112px;
+    padding: 8px 0;
   }
 
   .rud-top-links {
+    width: 100%;
+    flex-direction: column;
     justify-content: center;
-    gap: 10px 14px;
+    gap: 5px;
     text-align: center;
+  }
+
+  .rud-top-links a {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 17px;
+    line-height: 1.08;
   }
 
   .rud-top-links,
@@ -2942,50 +2972,108 @@ tr:last-child td {
   }
 
   .rud-socials {
-    gap: 12px;
+    gap: 15px;
     justify-content: center;
+  }
+
+  .rud-socials a {
+    width: 28px;
+    height: 28px;
+    font-size: 14px;
+  }
+
+  .rud-socials a i,
+  .rud-footer-socials a i {
+    display: block;
+  }
+
+  .rud-socials a::before,
+  .rud-footer-socials a::before {
+    display: none;
+  }
+
+  .rud-logo-row {
+    background: #e5f3ed;
   }
 
   .rud-logo-row .rud-container {
+    width: 100%;
+    max-width: none;
     align-items: center;
-    padding: 12px 0 0;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 0;
   }
 
   .rud-brand-image {
-    justify-content: center;
-    width: 100%;
+    justify-content: flex-start;
+    width: calc(100% - 68px);
+    min-height: 66px;
+    padding: 0 0 0 13px;
+    background: #e5f3ed;
   }
 
   .rud-logo-row img {
-    max-width: min(100%, 390px);
+    max-width: min(100%, 315px);
+    transform: none;
   }
 
   .rud-header-actions {
-    min-height: auto;
-    padding: 10px 8px;
+    order: -1;
+    min-width: 100%;
+    min-height: 61px;
+    padding: 11px 10px;
     width: 100%;
+    justify-content: center;
+    gap: 8px;
+    background: #fff;
   }
 
-  .rud-main-nav a {
-    padding: 12px 11px;
-    font-size: 15px;
-    white-space: nowrap;
+  .rud-header-actions::before {
+    display: none;
   }
 
   .rud-action-circle {
-    width: 44px;
-    height: 44px;
+    width: 49px;
+    height: 49px;
     font-size: 24px;
   }
 
   .rud-admission-btn {
-    min-width: auto;
-    padding: 13px 15px;
-    font-size: 15px;
+    flex: 1 1 auto;
+    min-width: 210px;
+    max-width: 255px;
+    padding: 16px 10px;
+    border-radius: 30px;
+    font-size: 18px;
+  }
+
+  .rud-mobile-menu {
+    width: 68px;
+    min-height: 66px;
+    border: 0;
+    background: #e5f3ed;
+    display: grid;
+    place-content: center;
+    gap: 5px;
+    padding: 0 20px 0 0;
+  }
+
+  .rud-mobile-menu span {
+    width: 36px;
+    height: 5px;
+    background: #272260;
+    display: block;
+  }
+
+  .rud-main-nav {
+    display: none;
   }
 
   .rud-hero {
-    min-height: 315px;
+    min-height: 118px;
+    border-top-width: 6px;
+    border-bottom-width: 4px;
   }
 
   .rud-slide {
@@ -2994,22 +3082,29 @@ tr:last-child td {
 
   .rud-slider-dots {
     bottom: 18px;
+    gap: 6px;
+  }
+
+  .rud-slider-dots span {
+    width: 18px;
+    height: 18px;
+    border-width: 3px;
   }
 
   .rud-slide-text h1 {
-    font-size: 29px;
+    font-size: 25px;
     line-height: 1.08;
   }
 
   .rud-slide-text p {
-    font-size: 21px;
+    font-size: 10px;
     line-height: 1.12;
   }
 
   .rud-slide-text {
-    left: 7%;
+    left: 13.5%;
     right: 7%;
-    top: 42%;
+    top: 48%;
   }
 
   .rud-admission-notice .rud-container {
@@ -3017,44 +3112,76 @@ tr:last-child td {
   }
 
   .rud-admission-notice h2 {
-    min-height: 48px;
+    min-height: 43px;
+    font-size: 25px;
   }
 
   .rud-notice-text {
-    min-height: 48px;
+    min-height: 43px;
+  }
+
+  .rud-admission-notice p {
+    font-size: 18px;
+  }
+
+  .rud-news-board {
+    padding: 80px 0 52px;
   }
 
   .rud-board-tabs {
-    justify-content: flex-start;
+    justify-content: center;
     overflow-x: auto;
+    gap: 8px;
+    margin-bottom: 38px;
   }
 
   .rud-board-tabs a {
     flex: 0 0 auto;
-    padding: 12px 14px;
-    font-size: 18px;
+    padding: 20px 24px;
+    font-size: 31px;
   }
 
   .rud-news-board h2 {
-    font-size: 34px;
+    width: calc(100% - 24px);
+    margin: 0 auto 70px;
+    font-size: 42px;
+    line-height: 1.1;
+  }
+
+  .rud-notice-cards {
+    width: calc(100% - 24px);
+    margin: 0 auto;
+    grid-template-columns: 1fr;
+    gap: 18px;
   }
 
   .rud-notice-card {
     grid-template-columns: 82px 1fr;
-    min-height: 116px;
-    padding: 14px;
+    min-height: 144px;
+    padding: 20px 24px;
+    width: 100%;
+    overflow: hidden;
   }
 
   .rud-notice-card h3 {
-    font-size: 20px;
+    font-size: 25px;
+    overflow-wrap: anywhere;
+  }
+
+  .rud-notice-card div:last-child {
+    min-width: 0;
   }
 
   .rud-notice-card a {
-    font-size: 17px;
+    font-size: 21px;
   }
 
   .rud-date strong {
-    font-size: 33px;
+    font-size: 40px;
+  }
+
+  .rud-date span {
+    font-size: 21px;
   }
 
   .rud-welcome,
@@ -3179,6 +3306,25 @@ tr:last-child td {
   }
 }
 
+@media (max-width: 420px) {
+  .rud-header-actions {
+    padding: 10px 8px;
+    gap: 6px;
+  }
+
+  .rud-action-circle {
+    width: 48px;
+    height: 48px;
+  }
+
+  .rud-admission-btn {
+    min-width: 145px;
+    max-width: 150px;
+    font-size: 16px;
+    padding: 16px 8px;
+  }
+}
+
 @media print {
   .portal-topbar,
   .portal-side,
@@ -3266,15 +3412,227 @@ tr:last-child td {
     grid-template-columns: 1fr;
   }
 
-  .portal-topbar,
-  .portal-menu {
-    align-items: flex-start;
-    flex-direction: column;
-    height: auto;
+  .portal-open {
+    background: #fff;
+  }
+
+  .portal-open .student-login-wrap {
+    overflow-x: hidden;
+  }
+
+  .portal-topbar {
+    height: 74px;
+    margin: 12px 14px;
+    padding: 0 13px;
+    border: 2px solid #29215f;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    align-items: center;
+    gap: 12px;
     white-space: normal;
   }
 
-  .portal-body,
+  .portal-logo-wrap {
+    min-width: 0;
+    flex: 1;
+    gap: 8px;
+  }
+
+  .portal-logo-wrap img {
+    width: 43px;
+    height: 43px;
+  }
+
+  .portal-logo-wrap div {
+    border-left: 2px solid #cfcfcf;
+    padding-left: 10px;
+  }
+
+  .portal-logo-wrap strong {
+    font-size: 31px;
+    line-height: 27px;
+  }
+
+  .portal-logo-wrap span {
+    font-size: 14px;
+    letter-spacing: 4px;
+  }
+
+  .portal-round {
+    width: 44px;
+    height: 44px;
+    border: 0;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: #2b2467;
+    color: #fff;
+    font-size: 24px;
+    font-weight: 800;
+    line-height: 1;
+  }
+
+  .portal-side-toggle {
+    font-size: 22px;
+  }
+
+  .portal-quick-toggle {
+    background: #5945a4;
+  }
+
+  .quick-open .portal-quick-toggle,
+  .side-open .portal-quick-toggle {
+    transform: rotate(180deg);
+  }
+
+  .side-open .portal-side-toggle {
+    font-size: 0;
+  }
+
+  .side-open .portal-side-toggle::before {
+    content: "×";
+    font-size: 28px;
+  }
+
+  .portal-user-icons {
+    gap: 0;
+  }
+
+  .portal-user-icons .bell {
+    display: none;
+  }
+
+  .portal-user-icons .user-dot {
+    width: 44px;
+    height: 44px;
+    background: #65bd52;
+    color: #fff;
+    font-size: 0;
+  }
+
+  .portal-user-icons .user-dot::before {
+    content: "●";
+    font-size: 26px;
+  }
+
+  .portal-user-icons .user-dot::after {
+    content: "⌄";
+    position: absolute;
+    right: -18px;
+    top: 13px;
+    color: #2b73b4;
+    font-size: 16px;
+  }
+
+  .portal-account-menu {
+    position: absolute;
+    right: 0;
+    top: 53px;
+    width: 230px;
+    display: none;
+    background: #fff;
+    border: 1px solid #d4d4d4;
+    border-radius: 5px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+    z-index: 20;
+  }
+
+  .account-open .portal-account-menu {
+    display: block;
+  }
+
+  .portal-account-menu button {
+    width: 100%;
+    min-height: 44px;
+    border: 0;
+    border-bottom: 1px solid #e5e5e5;
+    background: #fff;
+    color: #333;
+    text-align: left;
+    padding: 0 22px;
+    font-size: 16px;
+  }
+
+  .portal-account-menu button:last-child {
+    border-bottom: 0;
+  }
+
+  .portal-menu {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 99px;
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    padding: 18px 14px 16px;
+    background: #29215f;
+    color: #d4d0de;
+    z-index: 10;
+  }
+
+  .quick-open .portal-menu {
+    display: flex;
+  }
+
+  .portal-menu button {
+    width: 100%;
+    min-height: 40px;
+    color: #d4d0de;
+    text-align: left;
+    font-size: 16px;
+  }
+
+  .portal-menu button::before {
+    content: "■";
+    width: 30px;
+    height: 30px;
+    margin-right: 8px;
+    display: inline-grid;
+    place-items: center;
+    background: #f00;
+    color: #fff;
+    font-size: 12px;
+    vertical-align: middle;
+  }
+
+  .portal-menu strong {
+    width: 100%;
+    margin-top: 16px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    color: #fff;
+    text-align: center;
+    font-size: 18px;
+    text-transform: uppercase;
+  }
+
+  .portal-body {
+    display: block;
+    min-height: auto;
+    position: relative;
+  }
+
+  .portal-side {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: min(220px, 78vw);
+    padding: 132px 14px 24px;
+    background: #29215f;
+    border-right: 0;
+    box-shadow: 18px 0 28px rgba(0, 0, 0, 0.26);
+    transform: translateX(-105%);
+    transition: transform 240ms ease;
+    z-index: 9;
+  }
+
+  .side-open .portal-side {
+    transform: translateX(0);
+  }
+
   .student-info-card {
     grid-template-columns: 1fr;
   }
@@ -3285,10 +3643,133 @@ tr:last-child td {
     width: 100%;
   }
 
+  .portal-side button,
+  .portal-side a {
+    min-height: 58px;
+    padding: 0 14px;
+    border-bottom: 1px solid rgba(20, 16, 72, 0.72);
+    background: #29215f;
+    color: #d4d0de;
+    font-size: 16px;
+    line-height: 1.25;
+  }
+
+  .portal-side .side-link {
+    min-height: 44px;
+    border: 0;
+    border-bottom: 2px solid #29215f;
+    background: #fff;
+    color: #555;
+    font-size: 15px;
+  }
+
+  .portal-side .active-link {
+    background: #fff;
+    color: #555;
+  }
+
+  .portal-content {
+    padding: 0 14px 34px;
+  }
+
+  .portal-section-title {
+    height: 46px;
+    margin-top: 0;
+    padding-left: 16px;
+    border-radius: 5px 5px 0 0;
+    font-size: 18px;
+    background: #29215f;
+  }
+
+  .student-info-card {
+    min-height: auto;
+    padding: 22px 16px 38px;
+    gap: 18px;
+    border: 1px solid #e0e0e0;
+    border-top: 0;
+  }
+
+  .student-photo {
+    width: 180px;
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1.05;
+    border: 2px solid #999;
+    border-radius: 8px;
+  }
+
+  .student-no-photo {
+    font-size: 15px;
+  }
+
+  .info-lines {
+    padding-top: 0;
+  }
+
+  .info-lines p,
+  .detail-box p,
+  .address-box p {
+    grid-template-columns: minmax(112px, 0.95fr) 16px minmax(0, 1.15fr);
+    align-items: start;
+    gap: 4px;
+    margin-bottom: 11px;
+    font-size: 14px;
+    line-height: 1.25;
+  }
+
+  .info-lines p {
+    text-align: center;
+  }
+
+  .info-lines b,
+  .detail-box b,
+  .address-box b {
+    color: #555;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  }
+
+  .info-lines em,
+  .detail-box em,
+  .address-box em {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.28;
+  }
+
+  .detail-box {
+    min-height: auto;
+    padding: 24px 16px 16px;
+    border-radius: 6px;
+  }
+
   .detail-left,
   .detail-right,
   .portal-tabs,
   .address-box {
     grid-column: 1;
+  }
+
+  .portal-tabs {
+    display: flex;
+    overflow-x: auto;
+  }
+
+  .portal-tabs button {
+    flex: 0 0 auto;
+    font-size: 13px;
+  }
+
+  .address-box {
+    padding: 20px;
+  }
+
+  .address-box h3 {
+    font-size: 14px;
+  }
+
+  .portal-wide-panel,
+  .curriculum-report {
+    font-size: 14px;
+    overflow-x: auto;
   }
 }
