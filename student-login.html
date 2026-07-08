@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RUD Student Login</title>
+  <link rel="icon" type="image/png" href="assets/rud-logo.png">
+  <link rel="shortcut icon" type="image/png" href="assets/rud-logo.png">
+  <link rel="stylesheet" href="styles.css?v=14">
+</head>
+<body class="student-login-page">
+  <header class="student-alert">
+    <p>The Portal contains Student Information starting from Summer 2017 Semester and onwards.</p>
+    <p>If you require information prior to Summer 2017,</p>
+    <p>please visit the Exam Office or email:</p>
+    <p>controller@royal.edu.bd — Office of the Controller of Examinations.</p>
+  </header>
+
+  <main class="student-login-wrap">
+    <section class="classic-login-card" id="classicLoginCard">
+      <div class="classic-brand">
+        <img class="classic-logo-img" src="assets/rud-logo.png" alt="Royal University of Dhaka logo">
+        <div class="classic-divider"></div>
+        <div class="classic-title">
+          <h1>Royal University of Dhaka</h1>
+          <p>— New Horizon in Academic<br>Excellence.</p>
+        </div>
+      </div>
+
+      <p class="signin-copy">Sign in with your organizational id number.</p>
+
+      <form class="classic-form" id="classicLoginForm">
+        <input id="classicUserId" placeholder="User ID" autocomplete="username" required>
+        <input id="classicPassword" type="password" placeholder="Password" autocomplete="current-password" required>
+        <button type="submit">Login</button>
+      </form>
+
+      <a class="classic-help" href="#">Can’t access your account?</a>
+      <p class="classic-error" id="classicError"></p>
+    </section>
+
+    <section class="student-portal-screen" id="classicProfile" hidden></section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.js?v=1"></script>
+  <script src="supabase-db.js?v=1"></script>
+  <script src="student-login.js?v=16"></script>
+</body>
+</html>
