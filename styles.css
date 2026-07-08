@@ -3862,6 +3862,7 @@ tr:last-child td {
 /* Final responsive polish: keeps the public home page and student portal usable from 320px to desktop. */
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 .rud-home-page,
@@ -3872,6 +3873,11 @@ html {
 .rud-home-page *,
 .student-login-page * {
   box-sizing: border-box;
+}
+
+.rud-program-slider,
+.rud-notice-text {
+  overflow: hidden;
 }
 
 @media (max-width: 767px) {
@@ -4199,10 +4205,15 @@ html {
 /* Footer logo sits halfway on the white curve and halfway inside the blue footer. */
 .rud-footer {
   margin-top: 138px;
+  overflow: visible;
 }
 
 .rud-footer-logo {
   top: -96px;
+  left: 50%;
+  display: block;
+  max-width: calc(100vw - 40px);
+  object-fit: contain;
   z-index: 3;
 }
 
@@ -4211,12 +4222,14 @@ html {
     margin-top: 220px;
     padding-top: 286px;
     border-radius: 50% 50% 0 0 / 4% 4% 0 0;
+    overflow: visible;
   }
 
   .rud-footer-logo {
-    top: clamp(-148px, -38vw, -124px);
     width: clamp(270px, 82vw, 304px);
     height: clamp(270px, 82vw, 304px);
+    top: calc(clamp(270px, 82vw, 304px) / -2);
+    max-width: calc(100vw - 40px);
   }
 }
 
