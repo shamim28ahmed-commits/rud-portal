@@ -148,24 +148,24 @@ function bindPortalActions() {
   if (profileShell && !profileShell.dataset.portalBound) {
     profileShell.dataset.portalBound = "true";
     profileShell.addEventListener("click", (event) => {
-    const viewButton = event.target.closest("[data-portal-view]");
-    const tabButton = event.target.closest("[data-tab]");
+      const viewButton = event.target.closest("[data-portal-view]");
+      const tabButton = event.target.closest("[data-tab]");
 
-    if (viewButton) {
-      const view = viewButton.dataset.portalView;
-      if (view === "logout") {
-        logoutPortal();
+      if (viewButton) {
+        const view = viewButton.dataset.portalView;
+        if (view === "logout") {
+          logoutPortal();
+          return;
+        }
+        document.body.classList.remove("quick-open", "side-open", "account-open");
+        renderPortalView(view);
         return;
       }
-      document.body.classList.remove("quick-open", "side-open", "account-open");
-      renderPortalView(view);
-      return;
-    }
 
-    if (tabButton) {
-      document.body.classList.remove("quick-open", "side-open", "account-open");
-      renderPortalView(tabButton.dataset.tab);
-    }
+      if (tabButton) {
+        document.body.classList.remove("quick-open", "side-open", "account-open");
+        renderPortalView(tabButton.dataset.tab);
+      }
     });
   }
 }
@@ -516,12 +516,20 @@ function logoutPortal() {
   document.body.classList.remove("portal-open", "quick-open", "side-open", "account-open");
   window.currentPortalStudent = null;
   window.currentPortalPhoto = "";
-  document.querySelector(".student-alert").hidden = false;
-  document.querySelector("#classicLoginCard").hidden = false;
-  document.querySelector("#classicProfile").hidden = true;
-  document.querySelector("#classicProfile").innerHTML = "";
-  document.querySelector("#classicLoginForm").reset();
-  document.querySelector("#classicError").textContent = "";
+  const alert = document.querySelector(".student-alert");
+  const loginCard = document.querySelector("#classicLoginCard");
+  const profile = document.querySelector("#classicProfile");
+  const form = document.querySelector("#classicLoginForm");
+  const error = document.querySelector("#classicError");
+  if (alert) alert.hidden = false;
+  if (loginCard) loginCard.hidden = false;
+  if (profile) {
+    profile.hidden = true;
+    profile.innerHTML = "";
+  }
+  if (form) form.reset();
+  if (error) error.textContent = "";
+  window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
 function line(label, value) {

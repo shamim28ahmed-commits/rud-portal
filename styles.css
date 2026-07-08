@@ -3858,3 +3858,377 @@ tr:last-child td {
     overflow-x: auto;
   }
 }
+
+/* Final responsive polish: keeps the public home page and student portal usable from 320px to desktop. */
+html {
+  scroll-behavior: smooth;
+}
+
+.rud-home-page,
+.student-login-page {
+  overflow-x: hidden;
+}
+
+.rud-home-page *,
+.student-login-page * {
+  box-sizing: border-box;
+}
+
+@media (max-width: 767px) {
+  .rud-home-page {
+    font-size: 16px;
+  }
+
+  .rud-home-page .rud-container {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .rud-top-strip .rud-container {
+    min-height: auto;
+    padding: 12px 16px 14px;
+    gap: 10px;
+  }
+
+  .rud-top-links {
+    gap: 7px;
+  }
+
+  .rud-top-links a {
+    font-size: clamp(1rem, 4.8vw, 1.35rem);
+  }
+
+  .rud-socials a,
+  .rud-footer-socials a {
+    width: 34px;
+    height: 34px;
+    color: #272260;
+  }
+
+  .rud-header-actions {
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    padding: 10px clamp(10px, 3vw, 18px);
+    gap: 8px;
+  }
+
+  .rud-action-circle {
+    width: clamp(48px, 14vw, 62px);
+    height: clamp(48px, 14vw, 62px);
+    flex: 0 0 auto;
+    font-size: clamp(1.35rem, 6vw, 1.8rem);
+  }
+
+  .rud-admission-btn {
+    min-width: 0;
+    max-width: none;
+    flex: 1 1 auto;
+    padding: 16px 10px;
+    font-size: clamp(0.95rem, 4.4vw, 1.15rem);
+    white-space: nowrap;
+  }
+
+  .rud-brand-image {
+    width: calc(100% - 76px);
+    padding-left: 14px;
+  }
+
+  .rud-logo-row img {
+    max-width: min(100%, 365px);
+  }
+
+  .rud-mobile-menu {
+    width: 76px;
+    padding: 0 18px 0 0;
+  }
+
+  .rud-mobile-menu span {
+    transition: transform 180ms ease, opacity 180ms ease;
+  }
+
+  .rud-nav-open .rud-mobile-menu span:nth-child(1) {
+    transform: translateY(10px) rotate(45deg);
+  }
+
+  .rud-nav-open .rud-mobile-menu span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .rud-nav-open .rud-mobile-menu span:nth-child(3) {
+    transform: translateY(-10px) rotate(-45deg);
+  }
+
+  .rud-main-nav {
+    max-width: 100vw;
+  }
+
+  .rud-hero {
+    min-height: clamp(170px, 42vw, 280px);
+  }
+
+  .rud-slide-text {
+    left: 8%;
+    right: 8%;
+    top: 48%;
+  }
+
+  .rud-slide-text h1 {
+    font-size: clamp(1.55rem, 7vw, 2.35rem);
+  }
+
+  .rud-slide-text p {
+    font-size: clamp(0.95rem, 4.8vw, 1.55rem);
+  }
+
+  .rud-admission-notice h2 {
+    min-height: 54px;
+    font-size: clamp(1.35rem, 6vw, 2rem);
+  }
+
+  .rud-notice-text {
+    min-height: 50px;
+  }
+
+  .rud-admission-notice p {
+    font-size: clamp(0.95rem, 4vw, 1.2rem);
+  }
+
+  .rud-news-board {
+    padding: 46px 0;
+  }
+
+  .rud-board-tabs {
+    width: calc(100% - 28px);
+    margin: 0 auto 34px;
+    overflow: visible;
+  }
+
+  .rud-board-tabs a {
+    flex: 1 1 0;
+    min-height: 58px;
+    display: grid;
+    place-items: center;
+    padding: 10px 8px;
+    font-size: clamp(1.2rem, 5.4vw, 1.8rem);
+    text-align: center;
+  }
+
+  .rud-news-board h2 {
+    width: calc(100% - 28px);
+    margin-bottom: 28px;
+    font-size: clamp(2rem, 9vw, 2.8rem);
+  }
+
+  .rud-notice-cards {
+    width: calc(100% - 28px);
+    gap: 18px;
+  }
+
+  .rud-notice-card {
+    grid-template-columns: minmax(72px, 22%) 1fr;
+    min-height: 132px;
+    padding: 18px 16px;
+  }
+
+  .rud-notice-card h3 {
+    font-size: clamp(1.25rem, 5.8vw, 1.85rem);
+    overflow-wrap: normal;
+  }
+
+  .rud-notice-card a {
+    font-size: clamp(1.05rem, 4.8vw, 1.4rem);
+  }
+
+  .rud-date strong {
+    font-size: clamp(2rem, 9vw, 2.65rem);
+  }
+
+  .rud-date span {
+    font-size: clamp(1rem, 5vw, 1.35rem);
+  }
+
+  .rud-welcome,
+  .rud-founder,
+  .rud-chairman,
+  .rud-portal-links,
+  .rud-programs,
+  .rud-events {
+    width: 100%;
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .rud-program-card,
+  .rud-event-small,
+  .rud-event-feature {
+    max-width: 100%;
+  }
+
+  .rud-footer {
+    margin-top: 0;
+    padding: 150px 24px 26px;
+    min-height: auto;
+    border-radius: 52% 52% 0 0 / 7% 7% 0 0;
+    background:
+      linear-gradient(rgba(5, 62, 105, 0.92), rgba(5, 62, 105, 0.94)),
+      url("https://www.royal.edu.bd/wp-content/themes/rudtheme/images/footer-bg.jpg") center/cover no-repeat;
+  }
+
+  .rud-footer::before {
+    border-radius: 52% 52% 0 0 / 7% 7% 0 0;
+  }
+
+  .rud-footer-logo {
+    top: 28px;
+    width: clamp(112px, 34vw, 170px);
+    height: clamp(112px, 34vw, 170px);
+  }
+
+  .rud-footer .rud-container {
+    max-width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .rud-footer-contact h3 {
+    font-size: clamp(2rem, 8.5vw, 3.05rem);
+  }
+
+  .rud-footer-contact p {
+    margin: 22px 0;
+  }
+
+  .rud-footer-contact p strong {
+    max-width: 100%;
+    font-size: clamp(1.15rem, 5vw, 1.55rem);
+    line-height: 1.32;
+    overflow-wrap: anywhere;
+  }
+
+  .rud-footer-links h3 {
+    font-size: clamp(1.6rem, 7vw, 2.2rem);
+  }
+
+  .rud-footer-links a {
+    margin-bottom: 18px;
+    font-size: clamp(1.15rem, 5.4vw, 1.55rem);
+  }
+
+  .rud-copy {
+    margin: 28px 0 0;
+    padding-top: 20px;
+    text-align: left;
+    font-size: 0.95rem;
+  }
+
+  .student-login-page .portal-side-toggle {
+    font-size: 22px;
+  }
+
+  .student-login-page.side-open .portal-side-toggle {
+    font-size: 0;
+  }
+
+  .student-login-page.side-open .portal-side-toggle::before {
+    content: "X";
+    font-size: 25px;
+    line-height: 1;
+  }
+
+  .student-login-page.account-open .portal-account-menu {
+    display: block;
+  }
+
+  .student-login-page .portal-account-menu button {
+    cursor: pointer;
+  }
+
+  .student-login-page .portal-table,
+  .student-login-page .curriculum-info-table,
+  .student-login-page .curriculum-course-table {
+    min-width: 620px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .rud-container {
+    width: min(100% - 40px, 900px);
+  }
+
+  .rud-logo-row .rud-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .rud-brand-image {
+    justify-content: center;
+    padding: 18px 0;
+  }
+
+  .rud-header-actions {
+    min-width: 100%;
+    justify-content: center;
+  }
+
+  .rud-header-actions::before {
+    display: none;
+  }
+
+  .rud-main-nav .rud-container {
+    overflow-x: auto;
+    justify-content: flex-start;
+  }
+
+  .rud-notice-cards,
+  .rud-footer .rud-container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .rud-footer-contact {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (min-width: 1024px) {
+  .rud-home-page {
+    overflow-x: hidden;
+  }
+}
+
+/* Footer logo sits halfway on the white curve and halfway inside the blue footer. */
+.rud-footer {
+  margin-top: 138px;
+}
+
+.rud-footer-logo {
+  top: -96px;
+  z-index: 3;
+}
+
+@media (max-width: 767px) {
+  .rud-footer {
+    margin-top: 230px;
+    padding-top: 250px;
+    border-radius: 50% 50% 0 0 / 4% 4% 0 0;
+  }
+
+  .rud-footer-logo {
+    top: clamp(-142px, -29vw, -106px);
+    width: clamp(220px, 58vw, 300px);
+    height: clamp(220px, 58vw, 300px);
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .rud-footer {
+    margin-top: 118px;
+    padding-top: 156px;
+  }
+
+  .rud-footer-logo {
+    top: -78px;
+    width: 156px;
+    height: 156px;
+  }
+}
