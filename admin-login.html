@@ -3,308 +3,41 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>RUD Student Portal Demo</title>
+  <title>RUD Admin Login</title>
   <link rel="icon" type="image/png" href="assets/rud-logo.png">
   <link rel="shortcut icon" type="image/png" href="assets/rud-logo.png">
   <link rel="stylesheet" href="styles.css?v=14">
 </head>
-<body>
-  <div class="app-shell">
-    <aside class="sidebar" aria-label="Main navigation">
-      <div class="brand">
-        <img class="brand-logo" src="assets/rud-logo.png" alt="Royal University of Dhaka logo">
+<body class="admin-login-page">
+  <main class="admin-login-wrap">
+    <section class="admin-login-card">
+      <div class="admin-login-brand">
+        <img src="assets/rud-logo.png" alt="Royal University of Dhaka logo">
         <div>
-          <strong>RUD Portal</strong>
-          <span>Royal University of Dhaka</span>
+          <strong>RUD Admin</strong>
+          <span>Student Management Panel</span>
         </div>
       </div>
 
-      <nav class="nav-list">
-        <button class="nav-item active" data-view="adminDashboard" type="button">Dashboard</button>
-        <button class="nav-item" data-view="studentDirectory" type="button">Student Directory</button>
-        <button class="nav-item" data-view="studentForm" type="button">Add Student</button>
-        <button class="nav-item" data-view="phaseTwo" type="button">Phase 2</button>
-      </nav>
+      <h1>Admin Login</h1>
+      <p>Sign in to manage student records, notices and portal data.</p>
 
-      <div class="sidebar-note">
-        <span>Student Page</span>
-        <strong>Admin mode is open</strong>
-        <small><a href="student-login.html">Open separate student login</a></small>
-      </div>
-    </aside>
+      <form id="adminLoginForm" class="admin-login-form">
+        <label>Email
+          <input id="adminEmail" type="email" value="admin@rud.edu.bd" autocomplete="username" required>
+        </label>
+        <label>Password
+          <input id="adminPassword" type="password" value="admin123" autocomplete="current-password" required>
+        </label>
+        <button type="submit">Login</button>
+      </form>
 
-    <main class="main-panel">
-      <header class="topbar">
-        <div>
-          <p class="eyebrow">Student Management System</p>
-          <h1 id="pageTitle">Dashboard</h1>
-        </div>
-        <div class="top-actions">
-          <button class="ghost-button" id="adminLogout" type="button">Logout</button>
-          <button class="primary-button" data-view="studentForm" type="button">Add New Student</button>
-        </div>
-      </header>
+      <p class="admin-login-error" id="adminLoginError"></p>
+      <small>Demo: admin@rud.edu.bd / admin123</small>
+      <a href="student-login.html">Open Student Login</a>
+    </section>
+  </main>
 
-      <section class="view active" id="adminDashboard">
-        <div class="metric-grid">
-          <article class="metric">
-            <span>Total Students</span>
-            <strong id="totalStudents">0</strong>
-          </article>
-          <article class="metric">
-            <span>Enrolled</span>
-            <strong id="enrolledStudents">0</strong>
-          </article>
-          <article class="metric">
-            <span>Completed Study</span>
-            <strong id="completedStudents">0</strong>
-          </article>
-          <article class="metric">
-            <span>Payment Due</span>
-            <strong id="dueStudents">0</strong>
-          </article>
-        </div>
-
-        <div class="content-grid">
-          <section class="panel">
-            <div class="panel-heading">
-              <div>
-                <h2>Recent Students</h2>
-                <p>Latest student records from local storage.</p>
-              </div>
-            </div>
-            <div class="mini-list" id="recentStudents"></div>
-          </section>
-
-          <section class="panel">
-            <div class="panel-heading">
-              <div>
-                <h2>Notice Board</h2>
-                <p>Visible in the student portal demo.</p>
-              </div>
-            </div>
-            <form class="notice-form" id="noticeForm">
-              <input id="noticeTitle" placeholder="Notice title" required>
-              <textarea id="noticeBody" placeholder="Notice details" required></textarea>
-              <button class="primary-button" type="submit">Publish Notice</button>
-            </form>
-            <div class="notice-list" id="noticeList"></div>
-          </section>
-        </div>
-      </section>
-
-      <section class="view" id="studentDirectory">
-        <section class="panel">
-          <div class="panel-heading directory-heading">
-            <div>
-              <h2>Student Directory</h2>
-              <p>Manage and view all registered students.</p>
-            </div>
-            <div class="filter-row">
-              <input id="studentSearch" type="search" placeholder="Search ID, name, email">
-              <select id="statusFilter">
-                <option value="All">All Status</option>
-                <option value="Enrolled">Enrolled</option>
-                <option value="Completed Study">Completed Study</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="table-wrap">
-            <table>
-              <thead>
-                <tr>
-                  <th>Student ID</th>
-                  <th>Student Profile</th>
-                  <th>Program & Batch</th>
-                  <th>Contact Email</th>
-                  <th>Access Key</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody id="studentTable"></tbody>
-            </table>
-          </div>
-        </section>
-      </section>
-
-      <section class="view" id="studentForm">
-        <form class="student-form" id="studentFormEl">
-          <input type="hidden" id="editingId">
-
-          <section class="panel">
-            <div class="panel-heading">
-              <div>
-                <h2 id="formTitle">Add New Student</h2>
-                <p>Fill personal, academic, contact and education information.</p>
-              </div>
-              <button class="primary-button" type="submit">Save Student</button>
-            </div>
-
-            <div class="form-section">
-              <h3>Personal Information</h3>
-              <div class="photo-row">
-                <div class="photo-preview" id="photoPreview">No Image</div>
-                <label class="upload-control">
-                  <span>Upload Photo</span>
-                  <input id="photoInput" type="file" accept="image/png,image/jpeg">
-                  <small>Max 2MB. JPG, PNG only.</small>
-                </label>
-              </div>
-
-              <div class="form-grid">
-                <label>Student ID *
-                  <input id="studentId" required placeholder="e.g. 170140177">
-                </label>
-                <label>Full Name *
-                  <input id="fullName" required placeholder="e.g. Rayhan Prodhan">
-                </label>
-                <label>Date of Birth
-                  <input id="dob" type="date">
-                </label>
-                <label>Blood Group
-                  <select id="bloodGroup">
-                    <option value="">Select...</option>
-                    <option>A+</option><option>A-</option><option>B+</option><option>B-</option>
-                    <option>AB+</option><option>AB-</option><option>O+</option><option>O-</option>
-                  </select>
-                </label>
-                <label>National ID
-                  <input id="nationalId">
-                </label>
-                <label>Religion
-                  <select id="religion">
-                    <option value="">Select...</option>
-                    <option>Islam</option><option>Hinduism</option><option>Christianity</option><option>Buddhism</option><option>Other</option>
-                  </select>
-                </label>
-                <label>Father's Name
-                  <input id="fatherName">
-                </label>
-                <label>Mother's Name
-                  <input id="motherName">
-                </label>
-              </div>
-            </div>
-
-            <div class="form-section">
-              <h3>Academic Information</h3>
-              <div class="form-grid">
-                <label>Program
-                  <input id="program" placeholder="e.g. B.Sc in CSE">
-                </label>
-                <label>Department
-                  <input id="department" placeholder="e.g. Computer Science & Engineering">
-                </label>
-                <label>Batch No.
-                  <input id="batch" placeholder="e.g. 22">
-                </label>
-                <label>Section
-                  <input id="section" placeholder="e.g. A">
-                </label>
-                <label>Study Year
-                  <input id="studyYear" placeholder="e.g. 2026">
-                </label>
-                <label>Admission Date
-                  <input id="admissionDate" type="date">
-                </label>
-                <label>Status
-                  <select id="status">
-                    <option>Enrolled</option>
-                    <option>Completed Study</option>
-                  </select>
-                </label>
-                <label>CGPA
-                  <input id="cgpa" placeholder="e.g. 3.65">
-                </label>
-              </div>
-            </div>
-
-            <div class="form-section">
-              <h3>Contact Information</h3>
-              <div class="form-grid">
-                <label class="wide">Present Address
-                  <textarea id="presentAddress"></textarea>
-                </label>
-                <label class="wide">Permanent Address
-                  <textarea id="permanentAddress"></textarea>
-                </label>
-                <label>Mobile Number
-                  <input id="mobile">
-                </label>
-                <label>Guardian Phone
-                  <input id="guardianPhone">
-                </label>
-                <label>Email Address *
-                  <input id="email" type="email" required placeholder="Used for login">
-                </label>
-                <label>Access Key
-                  <input id="accessKey" placeholder="Auto generated if blank">
-                </label>
-              </div>
-            </div>
-
-            <div class="form-section">
-              <div class="section-title-row">
-                <h3>Education History</h3>
-                <button class="ghost-button" id="addEducationRow" type="button">Add Row</button>
-              </div>
-              <div class="table-wrap compact-table">
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Exam</th>
-                      <th>Group</th>
-                      <th>Institute</th>
-                      <th>Pass Year</th>
-                      <th>Division</th>
-                      <th>Marks</th>
-                      <th></th>
-                    </tr>
-                  </thead>
-                  <tbody id="educationRows"></tbody>
-                </table>
-              </div>
-            </div>
-          </section>
-        </form>
-      </section>
-
-      <section class="view" id="phaseTwo">
-        <div class="phase-grid">
-          <article class="phase-card">
-            <h2>Result</h2>
-            <p>Semester wise GPA, CGPA and downloadable result summary.</p>
-          </article>
-          <article class="phase-card">
-            <h2>Payment</h2>
-            <p>Fee records, paid/due status and receipt tracking.</p>
-          </article>
-          <article class="phase-card">
-            <h2>Course Registration</h2>
-            <p>Course selection, credit limit and admin approval.</p>
-          </article>
-          <article class="phase-card">
-            <h2>Notice</h2>
-            <p>Admin-published academic, exam and payment notices.</p>
-          </article>
-          <article class="phase-card">
-            <h2>Attendance</h2>
-            <p>Course-wise present percentage and low attendance warning.</p>
-          </article>
-          <article class="phase-card">
-            <h2>Certificate Request</h2>
-            <p>Transcript, testimonial and certificate request tracking.</p>
-          </article>
-        </div>
-      </section>
-    </main>
-  </div>
-
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="supabase-config.js?v=1"></script>
-  <script src="supabase-db.js?v=1"></script>
-  <script src="app.js?v=16"></script>
+  <script src="admin-login.js?v=14"></script>
 </body>
 </html>
