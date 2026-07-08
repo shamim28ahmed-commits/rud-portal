@@ -4208,15 +4208,15 @@ html {
 
 @media (max-width: 767px) {
   .rud-footer {
-    margin-top: 230px;
-    padding-top: 250px;
+    margin-top: 220px;
+    padding-top: 286px;
     border-radius: 50% 50% 0 0 / 4% 4% 0 0;
   }
 
   .rud-footer-logo {
-    top: clamp(-142px, -29vw, -106px);
-    width: clamp(220px, 58vw, 300px);
-    height: clamp(220px, 58vw, 300px);
+    top: clamp(-148px, -38vw, -124px);
+    width: clamp(270px, 82vw, 304px);
+    height: clamp(270px, 82vw, 304px);
   }
 }
 
