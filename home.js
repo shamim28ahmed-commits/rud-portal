@@ -13,6 +13,19 @@ document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") hideAdmissionPopup();
 });
 
+const mobileMenuButton = document.querySelector(".rud-mobile-menu");
+const mainNavigation = document.querySelector(".rud-main-nav");
+
+if (mobileMenuButton && mainNavigation) {
+  mobileMenuButton.addEventListener("click", () => {
+    document.body.classList.toggle("rud-nav-open");
+  });
+
+  mainNavigation.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => document.body.classList.remove("rud-nav-open"));
+  });
+}
+
 const campusSlides = Array.from(document.querySelectorAll(".rud-campus-slide"));
 const campusPrevious = document.querySelector(".rud-campus-prev");
 const campusNext = document.querySelector(".rud-campus-next");

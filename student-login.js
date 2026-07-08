@@ -144,17 +144,30 @@ function bindPortalActions() {
     document.body.classList.remove("quick-open", "side-open");
   });
 
-  document.querySelectorAll("[data-portal-view]").forEach((button) => {
-    button.addEventListener("click", () => {
-      const view = button.dataset.portalView;
+  const profileShell = document.querySelector("#classicProfile");
+  if (profileShell && !profileShell.dataset.portalBound) {
+    profileShell.dataset.portalBound = "true";
+    profileShell.addEventListener("click", (event) => {
+    const viewButton = event.target.closest("[data-portal-view]");
+    const tabButton = event.target.closest("[data-tab]");
+
+    if (viewButton) {
+      const view = viewButton.dataset.portalView;
       if (view === "logout") {
         logoutPortal();
         return;
       }
       document.body.classList.remove("quick-open", "side-open", "account-open");
       renderPortalView(view);
+      return;
+    }
+
+    if (tabButton) {
+      document.body.classList.remove("quick-open", "side-open", "account-open");
+      renderPortalView(tabButton.dataset.tab);
+    }
     });
-  });
+  }
 }
 
 function renderPortalView(view) {
@@ -205,10 +218,6 @@ function renderPortalView(view) {
     ["Notice", "Semester Final Result Published", "New"],
     ["Reminder", "Please clear due payments before registration.", "Info"]
   ]);
-
-  document.querySelectorAll("[data-tab]").forEach((tab) => {
-    tab.addEventListener("click", () => renderPortalView(tab.dataset.tab));
-  });
 
   const passwordForm = document.querySelector("#portalPasswordForm");
   if (passwordForm) passwordForm.addEventListener("submit", changePassword);
@@ -504,11 +513,15 @@ async function changePassword(event) {
 }
 
 function logoutPortal() {
-  document.body.classList.remove("portal-open");
+  document.body.classList.remove("portal-open", "quick-open", "side-open", "account-open");
+  window.currentPortalStudent = null;
+  window.currentPortalPhoto = "";
   document.querySelector(".student-alert").hidden = false;
   document.querySelector("#classicLoginCard").hidden = false;
   document.querySelector("#classicProfile").hidden = true;
+  document.querySelector("#classicProfile").innerHTML = "";
   document.querySelector("#classicLoginForm").reset();
+  document.querySelector("#classicError").textContent = "";
 }
 
 function line(label, value) {

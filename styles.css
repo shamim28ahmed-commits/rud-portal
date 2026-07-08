@@ -3070,6 +3070,54 @@ tr:last-child td {
     display: none;
   }
 
+  .rud-nav-open .rud-main-nav {
+    display: block;
+    background: #272260;
+    max-height: 68vh;
+    overflow-y: auto;
+  }
+
+  .rud-nav-open .rud-main-nav .rud-container {
+    width: 100%;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .rud-nav-open .rud-main-nav a,
+  .rud-nav-open .rud-nav-item > a {
+    width: 100%;
+    padding: 13px 22px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+    color: #fff;
+    background: #272260;
+    font-size: 18px;
+    text-align: left;
+    white-space: normal;
+  }
+
+  .rud-nav-open .rud-dropdown-menu,
+  .rud-nav-open .rud-academics-menu {
+    position: static;
+    width: 100%;
+    max-width: none;
+    max-height: none;
+    display: grid;
+    transform: none;
+    padding: 0 16px 12px;
+    background: #272260;
+    overflow: visible;
+  }
+
+  .rud-nav-open .rud-dropdown-menu a,
+  .rud-nav-open .rud-academics-menu a {
+    margin-top: 7px;
+    padding: 10px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.75);
+    font-size: 15px;
+  }
+
   .rud-hero {
     min-height: 118px;
     border-top-width: 6px;
@@ -3668,6 +3716,21 @@ tr:last-child td {
     color: #555;
   }
 
+  .portal-tabs {
+    display: flex;
+    width: 100%;
+    gap: 0;
+    overflow-x: auto;
+  }
+
+  .portal-tabs button {
+    flex: 1 0 auto;
+    min-height: 42px;
+    padding: 0 12px;
+    font-size: 13px;
+    white-space: nowrap;
+  }
+
   .portal-content {
     padding: 0 14px 34px;
   }
@@ -3726,6 +3789,28 @@ tr:last-child td {
   .address-box b {
     color: #555;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  }
+
+  .address-box {
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  .address-box h3 {
+    font-size: 14px;
+    white-space: normal;
+  }
+
+  .portal-table {
+    min-width: 620px;
+    font-size: 13px;
+  }
+
+  .portal-table th,
+  .portal-table td {
+    padding: 9px 8px;
+    white-space: normal;
+    word-break: normal;
   }
 
   .info-lines em,
