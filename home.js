@@ -1,48 +1,102 @@
-# RUD Portal Supabase Backend Setup
+const popup = document.querySelector("#rudAdmissionPopup");
+const closePopup = document.querySelector("#rudPopupClose");
 
-## 1. Supabase project create
+function hideAdmissionPopup() {
+  if (popup) popup.classList.add("is-hidden");
+}
 
-Go to https://supabase.com and create a new project.
+if (closePopup) {
+  closePopup.addEventListener("click", hideAdmissionPopup);
+}
 
-## 2. Database table create
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") hideAdmissionPopup();
+});
 
-Open Supabase Dashboard > SQL Editor.
+const mobileMenuButton = document.querySelector(".rud-mobile-menu");
+const mainNavigation = document.querySelector(".rud-main-nav");
 
-Copy all code from `supabase-schema.sql` and run it.
+if (mobileMenuButton && mainNavigation) {
+  mobileMenuButton.addEventListener("click", () => {
+    document.body.classList.toggle("rud-nav-open");
+  });
 
-## 3. URL and anon key add
+  mainNavigation.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => document.body.classList.remove("rud-nav-open"));
+  });
+}
 
-Open `supabase-config.js`.
+const campusSlides = Array.from(document.querySelectorAll(".rud-campus-slide"));
+const campusPrevious = document.querySelector(".rud-campus-prev");
+const campusNext = document.querySelector(".rud-campus-next");
 
-Replace:
+if (campusSlides.length) {
+  let campusActive = 0;
+  let campusTimer;
 
-```js
-url: "",
-anonKey: ""
-```
+  function showCampusSlide(index) {
+    campusActive = (index + campusSlides.length) % campusSlides.length;
+    campusSlides.forEach((slide, slideIndex) => {
+      slide.classList.toggle("is-active", slideIndex === campusActive);
+    });
+  }
 
-with your Supabase Project URL and anon public key.
+  function startCampusSlider() {
+    clearInterval(campusTimer);
+    campusTimer = setInterval(() => showCampusSlide(campusActive + 1), 3500);
+  }
 
-Example:
+  campusPrevious?.addEventListener("click", () => {
+    showCampusSlide(campusActive - 1);
+    startCampusSlider();
+  });
 
-```js
-window.RUD_SUPABASE = {
-  url: "https://your-project.supabase.co",
-  anonKey: "your-anon-public-key"
-};
-```
+  campusNext?.addEventListener("click", () => {
+    showCampusSlide(campusActive + 1);
+    startCampusSlider();
+  });
 
-## 4. Test
+  showCampusSlide(0);
+  startCampusSlider();
+}
 
-Open:
+const programTrack = document.querySelector(".rud-program-track");
+const programSlider = document.querySelector(".rud-program-slider");
+const programCards = Array.from(document.querySelectorAll(".rud-program-card"));
+const programPrevious = document.querySelector(".rud-program-prev");
+const programNext = document.querySelector(".rud-program-next");
+const programDots = Array.from(document.querySelectorAll(".rud-program-controls span"));
 
-- `admin-login.html`
-- add a student from admin dashboard
-- open `student-login.html`
-- login with student ID and access key
+if (programTrack && programCards.length) {
+  let programPage = 0;
 
-If Supabase config is empty, the site will keep working with local demo data.
+  function programCardsPerPage() {
+    if (window.innerWidth <= 640) return 1;
+    if (window.innerWidth <= 900) return 2;
+    return 3;
+  }
 
-## Important
+  function maxProgramPage() {
+    return Math.max(0, Math.ceil(programCards.length / programCardsPerPage()) - 1);
+  }
 
-This is a public demo backend setup. Before real student data, admin login should be upgraded with proper Supabase Auth and stricter database policies.
+  function showProgramPage(page) {
+    const maximumPage = maxProgramPage();
+    programPage = (page + maximumPage + 1) % (maximumPage + 1);
+    const pageWidth = (programSlider?.clientWidth || 0) + 12;
+    programTrack.style.transform = `translateX(-${programPage * pageWidth}px)`;
+    programDots.forEach((dot, index) => {
+      dot.classList.toggle("is-active", index === programPage);
+      dot.hidden = index > maximumPage;
+    });
+  }
+
+  programPrevious?.addEventListener("click", () => showProgramPage(programPage - 1));
+  programNext?.addEventListener("click", () => showProgramPage(programPage + 1));
+  programDots.forEach((dot, index) => {
+    dot.addEventListener("click", () => showProgramPage(index));
+  });
+
+  showProgramPage(0);
+  window.addEventListener("resize", () => showProgramPage(programPage));
+}
