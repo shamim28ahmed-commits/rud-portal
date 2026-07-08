@@ -4307,3 +4307,79 @@ html {
 .student-login-page .portal-account-menu button[data-portal-view="logout"]::before {
   content: "\f2f5";
 }
+
+.qr-login-button {
+  min-width: 62px;
+  padding: 8px 12px;
+  font-weight: 800;
+}
+
+.qr-modal[hidden] {
+  display: none;
+}
+
+.qr-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgba(15, 14, 45, 0.55);
+}
+
+.qr-card {
+  position: relative;
+  width: min(100%, 390px);
+  border-radius: 8px;
+  background: #fff;
+  padding: 24px;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
+  text-align: center;
+}
+
+.qr-card h2 {
+  margin: 0 0 8px;
+  color: #241b63;
+  font-size: 24px;
+}
+
+.qr-card p {
+  margin: 0 0 16px;
+  color: #5d6474;
+  font-size: 14px;
+}
+
+.qr-card img {
+  width: 240px;
+  height: 240px;
+  max-width: 100%;
+  object-fit: contain;
+  border: 1px solid #e3e6ee;
+  border-radius: 8px;
+  padding: 10px;
+  background: #fff;
+}
+
+.qr-card input {
+  width: 100%;
+  margin: 14px 0;
+  border: 1px solid #d9deea;
+  border-radius: 6px;
+  padding: 11px 12px;
+  font-size: 13px;
+}
+
+.qr-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 32px;
+  height: 32px;
+  border: 0;
+  border-radius: 50%;
+  background: #f2f3f7;
+  color: #1f1f32;
+  cursor: pointer;
+  font-weight: 800;
+}
