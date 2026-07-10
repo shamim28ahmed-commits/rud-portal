@@ -2,8 +2,34 @@ const storageKey = "rudPortalStudents";
 const noticeKey = "rudPortalNotices";
 const adminSessionKey = "rudAdminLoggedIn";
 
-if (sessionStorage.getItem(adminSessionKey) !== "true" && localStorage.getItem(adminSessionKey) !== "true") {
+function adminAuthClient() {
+  const config = window.RUD_SUPABASE || {};
+  if (!config.url || !config.anonKey || !window.supabase) return null;
+  return window.supabase.createClient(config.url, config.anonKey);
+}
+
+function redirectToAdminLogin() {
+  sessionStorage.removeItem(adminSessionKey);
+  localStorage.removeItem(adminSessionKey);
   window.location.href = "admin-login.html";
+}
+
+async function requireAdminAuth() {
+  const client = adminAuthClient();
+  if (!client) {
+    redirectToAdminLogin();
+    return null;
+  }
+
+  const { data, error } = await client.auth.getSession();
+  if (error || !data?.session) {
+    redirectToAdminLogin();
+    return null;
+  }
+
+  sessionStorage.setItem(adminSessionKey, "true");
+  localStorage.setItem(adminSessionKey, "true");
+  return client;
 }
 
 const seedStudents = [
@@ -570,7 +596,9 @@ if ($("#resetDemo")) {
 }
 
 if ($("#adminLogout")) {
-  $("#adminLogout").addEventListener("click", () => {
+  $("#adminLogout").addEventListener("click", async () => {
+    const client = adminAuthClient();
+    if (client) await client.auth.signOut();
     sessionStorage.removeItem(adminSessionKey);
     localStorage.removeItem(adminSessionKey);
     window.location.href = "admin-login.html";
@@ -594,6 +622,8 @@ if ($("#photoInput")) $("#photoInput").addEventListener("change", (event) => {
 });
 
 async function startAdminPortal() {
+  const authClient = await requireAdminAuth();
+  if (!authClient) return;
   resetForm();
   await loadPortalData();
   renderAll();
