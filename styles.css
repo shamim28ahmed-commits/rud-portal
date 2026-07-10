@@ -4308,6 +4308,38 @@ html {
   content: "\f2f5";
 }
 
+.student-login-page .portal-topbar {
+  overflow: visible;
+  position: relative;
+  z-index: 50;
+}
+
+.student-login-page .portal-user-icons {
+  position: relative;
+  z-index: 80;
+}
+
+@media (max-width: 767px) {
+  .student-login-page .portal-account-menu {
+    position: absolute;
+    top: 54px;
+    right: -10px;
+    width: 190px;
+    max-width: calc(100vw - 34px);
+    overflow: visible;
+  }
+
+  .student-login-page .portal-account-menu button {
+    min-height: 44px;
+    font-size: 15px;
+    padding: 0 16px;
+  }
+
+  .student-login-page .portal-account-menu button:last-child {
+    min-height: 46px;
+  }
+}
+
 .qr-login-button {
   min-width: 62px;
   padding: 8px 12px;
