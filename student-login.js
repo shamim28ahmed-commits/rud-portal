@@ -386,7 +386,7 @@ function curriculumGradeReport(student) {
             <td>Second Major</td><td>:</td><td><input name="secondMajor" value="${student.secondMajor || ""}"></td>
           </tr>
           <tr>
-            <td>Completed Credits</td><td>:</td><td><input name="completedCredit" value="${student.completedCredit || student.completedCredits || "-"}"></td>
+            <td>Completed Credits</td><td>:</td><td><input name="completedCredits" value="${student.completedCredits || student.completedCredit || "-"}"></td>
             <td>Minor</td><td>:</td><td><input name="minor" value="${student.minor || ""}"></td>
           </tr>
           <tr>
@@ -471,7 +471,7 @@ async function saveCurriculumReport(event) {
     major: form.elements.major.value.trim(),
     secondMajor: form.elements.secondMajor.value.trim(),
     registeredCredits: form.elements.registeredCredits.value.trim(),
-    completedCredit: form.elements.completedCredit.value.trim(),
+    completedCredits: form.elements.completedCredits.value.trim(),
     minor: form.elements.minor.value.trim(),
     cgpa: form.elements.cgpa.value.trim(),
     curriculumCourses: courses

@@ -221,6 +221,18 @@
                 <label>CGPA
                   <input id="cgpa" placeholder="e.g. 3.65">
                 </label>
+                <label>Payment Status
+                  <select id="payment">
+                    <option value="Due">Due</option>
+                    <option value="Paid">Paid</option>
+                  </select>
+                </label>
+                <label>Registered Credits
+                  <input id="registeredCredits" placeholder="e.g. 120">
+                </label>
+                <label>Completed Credits
+                  <input id="completedCredits" placeholder="e.g. 96">
+                </label>
               </div>
             </div>
 
@@ -320,6 +332,6 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="supabase-config.js?v=1"></script>
   <script src="supabase-db.js?v=2"></script>
-  <script src="app.js?v=20"></script>
+  <script src="app.js?v=22"></script>
 </body>
 </html>

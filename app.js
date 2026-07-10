@@ -363,6 +363,9 @@ function fillForm(student) {
   $("#admissionDate").value = student.admissionDate || "";
   $("#status").value = student.status || "Enrolled";
   $("#cgpa").value = student.cgpa || "";
+  $("#payment").value = student.payment || "Due";
+  $("#registeredCredits").value = student.registeredCredits || "";
+  $("#completedCredits").value = student.completedCredits || student.completedCredit || "";
   $("#presentAddress").value = student.presentAddress || "";
   $("#permanentAddress").value = student.permanentAddress || "";
   $("#mobile").value = student.mobile || "";
@@ -409,6 +412,9 @@ async function saveForm(event) {
     admissionDate: $("#admissionDate").value,
     status: $("#status").value,
     cgpa: $("#cgpa").value,
+    payment: $("#payment").value,
+    registeredCredits: $("#registeredCredits").value,
+    completedCredits: $("#completedCredits").value,
     presentAddress: $("#presentAddress").value,
     permanentAddress: $("#permanentAddress").value,
     mobile: $("#mobile").value,
@@ -417,8 +423,7 @@ async function saveForm(event) {
     key: $("#accessKey").value.trim() || generateKey(id),
     photo: photoData,
     education: collectEducation(),
-    results: originalId ? students.find((student) => student.id === originalId)?.results || "No result added" : "No result added",
-    payment: originalId ? students.find((student) => student.id === originalId)?.payment || "Due" : "Due"
+    results: originalId ? students.find((student) => student.id === originalId)?.results || "No result added" : "No result added"
   };
 
   const next = originalId
