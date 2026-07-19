@@ -165,7 +165,7 @@ function showProfile(student) {
   `;
 
   bindPortalActions();
-  renderPortalView("personal");
+  renderPortalView("registration");
 }
 
 function bindPortalActions() {
@@ -213,6 +213,7 @@ function bindPortalActions() {
 function renderPortalView(view) {
   const student = window.currentPortalStudent;
   const content = document.querySelector("#portalContent");
+  const portalContent = document.querySelector(".portal-content");
   const titles = {
     personal: "Student Information",
     education: "Education Information",
@@ -227,22 +228,26 @@ function renderPortalView(view) {
   };
 
   document.querySelector(".portal-section-title").textContent = titles[view] || "Student Information";
+  portalContent?.classList.toggle("registration-summary-view", view === "registration");
   document.querySelectorAll(".side-link").forEach((item) => {
     item.classList.toggle("active-link", item.dataset.portalView === view);
   });
 
   if (view === "personal") content.innerHTML = personalHtml(student, "general");
   if (view === "education") content.innerHTML = personalHtml(student, "education");
-  if (view === "courses") content.innerHTML = simplePanel("Courses & Results", [
-    ["Course", "Principles of Management", "Completed"],
-    ["Course", "Business Communication", "Completed"],
-    ["Result", student.results || "No result added", "Published"]
-  ]);
-  if (view === "registration") content.innerHTML = simplePanel("Course Registration", [
-    ["Semester", "Spring 2026", "Open"],
-    ["Credit Limit", "15 Credits", "Eligible"],
-    ["Status", "No pending registration", "Ready"]
-  ]);
+  if (view === "courses") {
+    content.innerHTML = simplePanel("Courses & Results", [
+      ["Course", "Principles of Management", "Completed"],
+      ["Course", "Business Communication", "Completed"],
+      ["Result", student.results || "Result not published yet", student.results ? "Published" : "Pending"]
+    ]);
+  }
+  if (view === "registration") {
+    content.innerHTML = `
+      ${studentSummaryHtml(student)}
+      ${registrationPanel()}
+    `;
+  }
   if (view === "grade") content.innerHTML = curriculumGradeReport(student);
   if (view === "download") content.innerHTML = downloadPanel();
   if (view === "library") content.innerHTML = simplePanel("Library", [
@@ -338,6 +343,42 @@ function personalHtml(student, activeTab) {
         </table>
       </div>
     `}
+  `;
+}
+
+function studentSummaryHtml(student) {
+  return `
+    <section class="student-summary-card">
+      <div class="student-summary-title">
+        <span>Student Summary</span>
+        <button type="button" data-portal-view="personal"><span aria-hidden="true">&#9638;</span> View Details</button>
+      </div>
+      <div class="student-summary-body">
+        <div class="student-summary-photo">${window.currentPortalPhoto}</div>
+        <div class="student-summary-lines">
+          ${line("Student ID", student.id)}
+          ${line("Student Name", student.name)}
+          ${line("Department", student.department || student.program)}
+          ${line("Batch", student.batch)}
+          ${line("Admission Date", formatDate(student.admissionDate))}
+          ${line("Completed Credit", student.completedCredits || student.completedCredit)}
+          ${line("CGPA", student.cgpa)}
+        </div>
+      </div>
+    </section>
+  `;
+}
+
+function registrationPanel() {
+  return `
+    <section class="student-registration-panel">
+      <div class="student-registration-title">
+        <span>Registration</span>
+        <select aria-label="Select registration semester">
+          <option value=""></option>
+        </select>
+      </div>
+    </section>
   `;
 }
 

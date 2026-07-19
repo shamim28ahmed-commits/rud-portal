@@ -440,6 +440,7 @@ function fillForm(student) {
   $("#payment").value = student.payment || "Due";
   $("#registeredCredits").value = student.registeredCredits || "";
   $("#completedCredits").value = student.completedCredits || student.completedCredit || "";
+  $("#results").value = student.results || "";
   $("#presentAddress").value = student.presentAddress || "";
   $("#permanentAddress").value = student.permanentAddress || "";
   $("#mobile").value = student.mobile || "";
@@ -490,6 +491,7 @@ async function saveForm(event) {
     payment: $("#payment").value,
     registeredCredits: $("#registeredCredits").value,
     completedCredits: $("#completedCredits").value,
+    results: $("#results").value.trim(),
     presentAddress: $("#presentAddress").value,
     permanentAddress: $("#permanentAddress").value,
     mobile: $("#mobile").value,
@@ -497,8 +499,7 @@ async function saveForm(event) {
     email: $("#email").value.trim(),
     key: $("#accessKey").value.trim() || generateKey(id),
     photo: photoData,
-    education: collectEducation(),
-    results: originalId ? students.find((student) => student.id === originalId)?.results || "No result added" : "No result added"
+    education: collectEducation()
   };
 
   const next = originalId
