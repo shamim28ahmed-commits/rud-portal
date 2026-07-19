@@ -1,44 +1,503 @@
-const http = require("http");
-const fs = require("fs");
-const path = require("path");
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Royal University of Dhaka (RUD)</title>
+  <link rel="icon" type="image/png" href="assets/rud-logo.png">
+  <link rel="shortcut icon" type="image/png" href="assets/rud-logo.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="styles.css?v=69">
+</head>
+<body class="rud-home-page">
+  <header class="rud-top-strip">
+    <div class="rud-container">
+      <div class="rud-top-links">
+        <a href="https://www.royal.edu.bd" target="_blank" rel="noopener">Teachers Portal</a>
+        <a class="student-link" href="student-login.html">Students Portal Link-1</a>
+        <a class="student-link" href="student-login.html">Students Portal Link-2</a>
+        <a href="https://www.royal.edu.bd/library/" target="_blank" rel="noopener">Library</a>
+      </div>
+      <div class="rud-socials" aria-label="Social links">
+        <a href="http://www.facebook.com/royal.edu.bd" target="_blank" rel="noopener" aria-label="Facebook" data-icon="f"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="https://twitter.com/royaludhaka" target="_blank" rel="noopener" aria-label="Twitter" data-icon="t"><i class="fa-brands fa-twitter"></i></a>
+        <a href="https://www.instagram.com/royal.edu.bd/" target="_blank" rel="noopener" aria-label="Instagram" data-icon="◎"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/school/18886859/" target="_blank" rel="noopener" aria-label="LinkedIn" data-icon="in"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="https://www.youtube.com/channel/UCe-xM1w9jhotOFqlUAzI0-Q" target="_blank" rel="noopener" aria-label="YouTube" data-icon="▶"><i class="fa-brands fa-youtube"></i></a>
+      </div>
+    </div>
+  </header>
 
-const root = __dirname;
-const port = 4173;
-const types = {
-  ".html": "text/html; charset=utf-8",
-  ".css": "text/css; charset=utf-8",
-  ".js": "text/javascript; charset=utf-8",
-  ".png": "image/png",
-  ".jpg": "image/jpeg",
-  ".jpeg": "image/jpeg",
-  ".svg": "image/svg+xml",
-  ".ico": "image/x-icon"
-};
+  <section class="rud-logo-row">
+    <div class="rud-container">
+      <a class="rud-brand-image" href="https://www.royal.edu.bd" target="_blank" rel="noopener">
+        <img src="assets/rud-full-logo.png" alt="Royal University of Dhaka logo">
+      </a>
+      <button class="rud-mobile-menu" type="button" aria-label="Menu"><span></span><span></span><span></span></button>
+      <div class="rud-header-actions">
+        <a class="rud-action-circle rud-search" href="https://www.royal.edu.bd/?s=" target="_blank" rel="noopener" aria-label="Search"><i class="fa-solid fa-magnifying-glass"></i></a>
+        <a class="rud-action-circle rud-grad" href="student-login.html" aria-label="Student portal"><i class="fa-solid fa-graduation-cap"></i></a>
+        <a class="rud-admission-btn" href="https://www.royal.edu.bd/online-admission/" target="_blank" rel="noopener">Online Admission&nbsp;&nbsp;»</a>
+        <a class="rud-action-circle rud-whatsapp" href="https://wa.me/+8801332544319" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+      </div>
+    </div>
+  </section>
 
-http.createServer((req, res) => {
-  let urlPath = decodeURIComponent(req.url.split("?")[0]);
-  if (urlPath === "/" || urlPath === "") urlPath = "/index.html";
+  <nav class="rud-main-nav">
+    <div class="rud-container">
+      <a href="https://www.royal.edu.bd/" target="_blank" rel="noopener">Home</a>
+      <div class="rud-nav-item">
+        <a href="https://www.royal.edu.bd/about-us/#welcome" target="_blank" rel="noopener">About</a>
+        <div class="rud-dropdown-menu rud-about-menu">
+          <a href="https://www.royal.edu.bd/about-us/#welcome" target="_blank" rel="noopener">Wecome to RUD</a>
+          <a href="https://www.royal.edu.bd/about-us/#background" target="_blank" rel="noopener">Background & History</a>
+          <a href="https://www.royal.edu.bd/about-us/#vision" target="_blank" rel="noopener">Our Vision</a>
+          <a href="https://www.royal.edu.bd/about-us/#mission" target="_blank" rel="noopener">Our Mision</a>
+          <a href="https://www.royal.edu.bd/about-us/#why-study-here" target="_blank" rel="noopener">Why Study Here</a>
+          <a href="https://www.royal.edu.bd/career/" target="_blank" rel="noopener">Career</a>
+        </div>
+      </div>
+      <div class="rud-nav-item">
+        <a href="javascript:void(0)">Administration</a>
+        <div class="rud-dropdown-menu rud-admin-menu">
+          <a href="https://www.royal.edu.bd/message-from-former-chairman/" target="_blank" rel="noopener">Message from Founder Chairperson</a>
+          <a href="https://www.royal.edu.bd/message-from-chairman/" target="_blank" rel="noopener">Message from Chairman</a>
+          <a href="https://www.royal.edu.bd/message-from-the-vice-chairman/" target="_blank" rel="noopener">Message from the Vice Chairman</a>
+          <a href="https://www.royal.edu.bd/message-from-the-chief-advisor/" target="_blank" rel="noopener">Message from the Chief Advisor</a>
+          <a href="https://www.royal.edu.bd/board-of-trustees/" target="_blank" rel="noopener">Board of Trustees</a>
+          <a href="https://www.royal.edu.bd/administrative-offices/" target="_blank" rel="noopener">Offices</a>
+          <a href="https://www.royal.edu.bd/committees/" target="_blank" rel="noopener">Committees</a>
+          <a href="https://www.royal.edu.bd/syndicate/" target="_blank" rel="noopener">Syndicate</a>
+          <a href="https://www.royal.edu.bd/academic-council/" target="_blank" rel="noopener">Academic Council</a>
+          <a href="https://www.royal.edu.bd/administration/#hr" target="_blank" rel="noopener">Hr & Administrative Policies</a>
+        </div>
+      </div>
+      <div class="rud-nav-item">
+        <a href="javascript:void(0)">Academics</a>
+        <div class="rud-academics-menu">
+          <a href="https://www.royal.edu.bd/faculty-of-science-and-engineering/" target="_blank" rel="noopener">Faculty of Science & Engineering</a>
+          <a href="https://www.royal.edu.bd/faculty-of-business-administration/" target="_blank" rel="noopener">Faculty of Business Administration</a>
+          <a href="https://www.royal.edu.bd/faculty-of-arts-social-science/" target="_blank" rel="noopener">Faculty of Arts & Social Science</a>
+          <a href="https://www.royal.edu.bd/faculty-member-information/" target="_blank" rel="noopener">Academic Administration & Faculty Members</a>
+          <a href="https://www.royal.edu.bd/academics/" target="_blank" rel="noopener">Centres and Initiatives</a>
+          <a href="https://www.royal.edu.bd/academics/" target="_blank" rel="noopener">Academic Regulations</a>
+          <a href="https://www.royal.edu.bd/academics/" target="_blank" rel="noopener">Academic Rigor</a>
+          <a href="https://www.royal.edu.bd/academic-calendar/" target="_blank" rel="noopener">Academic Calendar</a>
+          <a href="https://www.royal.edu.bd/academics/" target="_blank" rel="noopener">IQAC</a>
+        </div>
+      </div>
+      <div class="rud-nav-item">
+        <a href="javascript:void(0)">Admission</a>
+        <div class="rud-dropdown-menu rud-admission-menu">
+          <a href="https://www.royal.edu.bd/admission/" target="_blank" rel="noopener">Undergraduate Admission</a>
+          <a href="https://www.royal.edu.bd/admission/" target="_blank" rel="noopener">Postgraduate Admission</a>
+          <a href="https://www.royal.edu.bd/admission/" target="_blank" rel="noopener">Admission Requirements</a>
+          <a href="https://www.royal.edu.bd/fees-payments/" target="_blank" rel="noopener">Fees &amp; Payments</a>
+          <a href="https://www.royal.edu.bd/admission/" target="_blank" rel="noopener">Scholarship / Financial Aid</a>
+          <a href="https://www.royal.edu.bd/admission/" target="_blank" rel="noopener">International Scholarship Offers</a>
+          <a href="https://www.royal.edu.bd/admission/" target="_blank" rel="noopener">FAQs</a>
+          <a href="https://www.royal.edu.bd/" target="_blank" rel="noopener">Admission Form</a>
+          <a href="https://www.royal.edu.bd/admission/" target="_blank" rel="noopener">Policies &amp; Procedures</a>
+          <a href="https://www.royal.edu.bd/admission/" target="_blank" rel="noopener">International Applicants</a>
+          <a href="https://www.royal.edu.bd/admission-fair/" target="_blank" rel="noopener">Admission Fair</a>
+        </div>
+      </div>
+      <div class="rud-nav-item">
+        <a href="javascript:void(0)">Faculties</a>
+        <div class="rud-dropdown-menu rud-faculties-menu">
+          <a href="https://www.royal.edu.bd/academic/" target="_blank" rel="noopener">Faculties</a>
+          <a href="https://www.royal.edu.bd/faculty-of-science-and-engineering/" target="_blank" rel="noopener">Faculty of Science &amp; Engineering</a>
+          <a href="https://www.royal.edu.bd/bsc-in-cse/" target="_blank" rel="noopener">B.Sc. in CSE (Day/ Evening)</a>
+          <a href="https://www.royal.edu.bd/bsc-in-csit/" target="_blank" rel="noopener">B.Sc. in CSIT (Day/Evening)</a>
+          <a href="https://www.royal.edu.bd/msc-in-cse/" target="_blank" rel="noopener">M.Sc. in CSE</a>
+          <a href="https://www.royal.edu.bd/msc-in-library-management-information-science/" target="_blank" rel="noopener">Master of Science in Library Management &amp; Information Science (MSLMIS)</a>
+          <a href="https://www.royal.edu.bd/faculty-of-business-administration/" target="_blank" rel="noopener">Faculty of Business Administration</a>
+          <a href="https://www.royal.edu.bd/bachelor-of-business-administration-bba/" target="_blank" rel="noopener">Bachelor of Business Administration (BBA) Day/Evening</a>
+          <a href="https://www.royal.edu.bd/master-of-business-administration-mba/" target="_blank" rel="noopener">Master of Business Administration (MBA) Day/Evening</a>
+          <a href="https://www.royal.edu.bd/executive-master-of-business-administration-emba/" target="_blank" rel="noopener">Executive Master of Business Administration (EMBA)</a>
+          <a href="https://www.royal.edu.bd/faculty-of-arts-social-science/" target="_blank" rel="noopener">Faculty of Arts &amp; Social Science</a>
+          <a href="https://www.royal.edu.bd/ba-in-english-program/" target="_blank" rel="noopener">BA Hons in English</a>
+          <a href="https://www.royal.edu.bd/bachelor-of-hotel-management-and-tourism/" target="_blank" rel="noopener">Bachelor of Hotel Management &amp; Tourism (BHMT)</a>
+          <a href="https://www.royal.edu.bd/bachelor-of-arts-in-education/" target="_blank" rel="noopener">Bachelor of Arts in Education (B.ED)</a>
+          <a href="https://www.royal.edu.bd/master-of-arts-in-education/" target="_blank" rel="noopener">Master Of Arts in Education (M.ED.)</a>
+          <a href="https://www.royal.edu.bd/faculty-member-information/" target="_blank" rel="noopener">Academic Administration &amp; Faculty Members</a>
+        </div>
+      </div>
+      <a href="https://www.royal.edu.bd/research/" target="_blank" rel="noopener">Research</a>
+      <div class="rud-nav-item">
+        <a href="javascript:void(0)">News &amp; Notice</a>
+        <div class="rud-dropdown-menu rud-news-notice-menu">
+          <a href="https://www.royal.edu.bd/news-events/" target="_blank" rel="noopener">News &amp; Events</a>
+          <a href="https://www.royal.edu.bd/notice-board/" target="_blank" rel="noopener">Notice</a>
+          <a href="https://www.royal.edu.bd/gallery/" target="_blank" rel="noopener">Gallery</a>
+          <a href="https://www.royal.edu.bd/students-clubs/" target="_blank" rel="noopener">Students Club</a>
+          <a href="https://www.royal.edu.bd/prevention-of-sexual-harassment/" target="_blank" rel="noopener">Prevention of Sexual Harassment</a>
+        </div>
+      </div>
+      <a href="https://www.royal.edu.bd/contact-us/" target="_blank" rel="noopener">Contact Us</a>
+    </div>
+  </nav>
 
-  const filePath = path.normalize(path.join(root, urlPath));
-  if (!filePath.startsWith(root)) {
-    res.writeHead(403);
-    res.end("Forbidden");
-    return;
-  }
+  <main>
+    <section class="rud-hero">
+      <div class="rud-slide rud-slide-1">
+        <div class="rud-slide-text">
+          <h1>B.Sc. In Computer Science</h1>
+          <p>and Engineering (CSE)</p>
+        </div>
+      </div>
+      <div class="rud-slide rud-slide-2">
+        <div class="rud-slide-text">
+          <h1>Bachelor of Business</h1>
+          <p>Administration (BBA)</p>
+        </div>
+      </div>
+      <div class="rud-slide rud-slide-3">
+        <div class="rud-slide-text">
+          <h1>Master of Business</h1>
+          <p>Administration (MBA)</p>
+        </div>
+      </div>
+      <div class="rud-slide rud-slide-4">
+        <div class="rud-slide-text">
+          <h1>M.Sc. In Computer Science</h1>
+          <p>and Engineering (CSE)</p>
+        </div>
+      </div>
+      <div class="rud-slider-dots" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+    </section>
 
-  fs.readFile(filePath, (error, data) => {
-    if (error) {
-      res.writeHead(404);
-      res.end("Not found");
-      return;
-    }
+    <section class="rud-admission-notice">
+      <div class="rud-container">
+        <h2>Admission Notice</h2>
+        <div class="rud-notice-text">
+          <p>Admission Going on, Spring 2026 at Royal University of Dhaka (RUD). Permanent Campus: Plot 404, Tejgaon Industrial Area, Dhaka-1208, Bangladesh. Phone: +880-1332-544319, +880-1332-544320</p>
+        </div>
+      </div>
+    </section>
 
-    res.writeHead(200, {
-      "Content-Type": types[path.extname(filePath).toLowerCase()] || "application/octet-stream",
-      "Cache-Control": "no-store"
-    });
-    res.end(data);
-  });
-}).listen(port, "127.0.0.1", () => {
-  console.log(`RUD portal running at http://127.0.0.1:${port}/`);
-});
+    <section class="rud-news-board">
+      <div class="rud-container">
+        <div class="rud-board-tabs">
+          <a class="active" href="https://www.royal.edu.bd/notice-board/" target="_blank" rel="noopener">Notice Board</a>
+          <a href="https://www.royal.edu.bd/news-events/" target="_blank" rel="noopener">News & Events</a>
+        </div>
+        <h2>Our Notice Board</h2>
+        <div class="rud-notice-cards">
+          <article class="rud-notice-card">
+            <div class="rud-date"><strong>29</strong><span>Jun</span><span>2026</span></div>
+            <div><h3>Mid Term Routine for Summer 2026 ..</h3><a href="https://www.royal.edu.bd/mid-term-routine-for-summer-2026-semester/" target="_blank" rel="noopener">Learn More</a></div>
+          </article>
+          <article class="rud-notice-card">
+            <div class="rud-date"><strong>22</strong><span>Jun</span><span>2026</span></div>
+            <div><h3>Notice On the Holiday of Ashura ..</h3><a href="https://www.royal.edu.bd/notice-on-the-holiday-of-ashura/" target="_blank" rel="noopener">Learn More</a></div>
+          </article>
+          <article class="rud-notice-card">
+            <div class="rud-date"><strong>18</strong><span>Jun</span><span>2026</span></div>
+            <div><h3>Notice on Mid-Term Examinations of the ..</h3><a href="https://www.royal.edu.bd/notice-on-mid-term-examinations-of-the-summer-semester-2026/" target="_blank" rel="noopener">Learn More</a></div>
+          </article>
+          <article class="rud-notice-card">
+            <div class="rud-date"><strong>17</strong><span>May</span><span>2026</span></div>
+            <div><h3>Notice on Eid-Ul-Adha Holidays ..</h3><a href="https://www.royal.edu.bd/notice-on-eid-ul-adha-holidays/" target="_blank" rel="noopener">Learn More</a></div>
+          </article>
+          <article class="rud-notice-card">
+            <div class="rud-date"><strong>17</strong><span>May</span><span>2026</span></div>
+            <div><h3>Notice on Summer Semester 2026 Registration ..</h3><a href="https://www.royal.edu.bd/notice-on-summer-semester-2026-registration-fees/" target="_blank" rel="noopener">Learn More</a></div>
+          </article>
+          <article class="rud-notice-card">
+            <div class="rud-date"><strong>14</strong><span>May</span><span>2026</span></div>
+            <div><h3>Notice on the First Convocation of ..</h3><a href="https://www.royal.edu.bd/notice-on-the-first-convocation-of-royal-university-of-dhaka/" target="_blank" rel="noopener">Learn More</a></div>
+          </article>
+        </div>
+        <div class="rud-view-all-notice">
+          <a href="https://www.royal.edu.bd/notice/" target="_blank" rel="noopener">View All Notice <span>+</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="rud-welcome">
+      <div class="rud-container">
+        <div class="rud-welcome-copy">
+          <h2>Welcome to RUD</h2>
+          <p>The Royal University of Dhaka (RUD) stands as an academic epicenter of excellence to the vision of its founder, Dr. Momtaz Begum, and the Board with a dedicated philanthropic, timeless social worker and visionary leader. Established as a nonprofit and nonsectarian private university, RUD came into existence under the aegis of the Private University Act, 1992.</p>
+          <a href="https://www.royal.edu.bd/about-us/#background" target="_blank" rel="noopener">Learn More</a>
+        </div>
+        <div class="rud-welcome-photo">
+          <div class="rud-stats">
+            <strong>10,000<span>Student</span></strong>
+            <strong>20<span>Courses</span></strong>
+          </div>
+          <img src="https://www.royal.edu.bd/wp-content/themes/rudtheme/images/welcome-img-rud-final-raw.png" alt="Royal University students">
+        </div>
+      </div>
+    </section>
+
+    <section class="rud-founder">
+      <div class="rud-container">
+        <div class="rud-founder-copy">
+          <h2>Message From Founder Chairperson</h2>
+          <p>Royal University of Dhaka (RUD) understands the need for an entirely new outlook on university education. Our education philosophy is not simply to produce more business graduates, IT specialists, or accountants. Education must groom visionary leaders and entrepreneurs who can contribute and add value to society.</p>
+          <a href="https://www.royal.edu.bd/message-from-former-chairman/" target="_blank" rel="noopener">Read More</a>
+        </div>
+        <figure>
+          <img src="https://www.royal.edu.bd/wp-content/themes/rudtheme/images/founder-chairman-revised.jpg" alt="Dr. Momtaz Begum">
+          <figcaption><strong>Dr. Momtaz Begum</strong><span>Founder Chairperson</span></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="rud-chairman">
+      <div class="rud-container">
+        <figure>
+          <img src="https://www.royal.edu.bd/wp-content/themes/rudtheme/images/chairman-img.jpg" alt="Dr. Hefjul Bari Mohammad Iqbal">
+          <figcaption><strong>Dr. Hefjul Bari Mohammad Iqbal</strong><span>Chairman</span></figcaption>
+        </figure>
+        <div class="rud-chairman-copy">
+          <h2>Message From Chairman</h2>
+          <p>At the Royal University of Dhaka, our commitment to excellence is not a mere statement - it is our true dream to build the state-of-the-art university nestled in the vibrant heart of Dhaka city. This institution, built with unconditional resource support, stands as a testament to our shared commitment to excellence in education, research, and societal transformation.</p>
+          <a href="https://www.royal.edu.bd/message-from-chairman/" target="_blank" rel="noopener">Read More»</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="rud-portal-links">
+      <div class="rud-container">
+        <h2>Preparing students to make meaningful contributions to society as engaged citizens and leaders in a complex world</h2>
+        <div class="rud-portal-login-list">
+          <article>
+            <h3>Students Portal Link-1</h3>
+            <a href="student-login.html">Login »</a>
+          </article>
+          <article>
+            <h3>Students Portal Link-2</h3>
+            <a href="student-login.html">Login »</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="rud-campus-slider" aria-label="Campus life slider">
+      <div class="rud-campus-slide is-active">
+        <img src="https://www.royal.edu.bd/wp-content/themes/rudtheme/images/campus-life/campus1.png" alt="Royal University campus life">
+      </div>
+      <div class="rud-campus-slide">
+        <img src="https://www.royal.edu.bd/wp-content/themes/rudtheme/images/campus-life/campus2.png" alt="Royal University student activities">
+      </div>
+      <button class="rud-campus-arrow rud-campus-prev" type="button" aria-label="Previous slide">‹</button>
+      <button class="rud-campus-arrow rud-campus-next" type="button" aria-label="Next slide">›</button>
+    </section>
+
+    <section class="rud-apply-banner">
+      <div class="rud-apply-overlay">
+        <img src="assets/rud-logo.png" alt="Royal University logo">
+        <h2>Top-Rated<br>Undergraduate &amp; Graduate Programs</h2>
+        <a href="https://www.royal.edu.bd/online-admission/" target="_blank" rel="noopener">Apply Now »</a>
+      </div>
+    </section>
+
+    <section class="rud-programs">
+      <h2>Our Programs</h2>
+      <div class="rud-program-slider" aria-label="Our programs slider">
+        <div class="rud-program-track">
+          <article class="rud-program-card">
+            <a href="https://www.royal.edu.bd/bachelor-of-business-administration-bba/" target="_blank" rel="noopener">
+              <img src="https://www.royal.edu.bd/wp-content/uploads/2024/02/our-progms-bba.jpg" alt="Bachelor of Business Administration">
+            </a>
+            <div>
+              <h3>Bachelor of Business Administration (BBA)</h3>
+              <a href="https://www.royal.edu.bd/bachelor-of-business-administration-bba/" target="_blank" rel="noopener">Learn More</a>
+            </div>
+          </article>
+          <article class="rud-program-card">
+            <a href="https://www.royal.edu.bd/master-of-business-administration-mba/" target="_blank" rel="noopener">
+              <img src="https://www.royal.edu.bd/wp-content/themes/rudtheme/images/programs/program-thumb-mba.jpg" alt="Master of Business Administration">
+            </a>
+            <div>
+              <h3>Master of Business Administration (MBA)</h3>
+              <a href="https://www.royal.edu.bd/master-of-business-administration-mba/" target="_blank" rel="noopener">Learn More</a>
+            </div>
+          </article>
+          <article class="rud-program-card">
+            <a href="https://www.royal.edu.bd/executive-master-of-business-administration-emba/" target="_blank" rel="noopener">
+              <img src="https://www.royal.edu.bd/wp-content/themes/rudtheme/images/programs/program-thumb-mba2.jpg" alt="Executive Master of Business Administration">
+            </a>
+            <div>
+              <h3>Executive Master of Business Administration (EMBA)</h3>
+              <a href="https://www.royal.edu.bd/executive-master-of-business-administration-emba/" target="_blank" rel="noopener">Learn More</a>
+            </div>
+          </article>
+          <article class="rud-program-card">
+            <a href="https://www.royal.edu.bd/bsc-in-csit/" target="_blank" rel="noopener">
+              <img src="https://www.royal.edu.bd/wp-content/uploads/2024/02/our-progms-csit.jpg" alt="B.SC in Computer Science and Information Technology">
+            </a>
+            <div>
+              <h3>B.SC in Computer Science and Information Technology (CSIT)</h3>
+              <a href="https://www.royal.edu.bd/bsc-in-csit/" target="_blank" rel="noopener">Learn More</a>
+            </div>
+          </article>
+          <article class="rud-program-card">
+            <a href="https://www.royal.edu.bd/bsc-in-cse/" target="_blank" rel="noopener">
+              <img src="https://www.royal.edu.bd/wp-content/uploads/2024/02/our-progms-cse.jpg" alt="B.Sc in Computer Science and Engineering">
+            </a>
+            <div>
+              <h3>B.Sc in Computer Science and Engineering (CSE)</h3>
+              <a href="https://www.royal.edu.bd/bsc-in-cse/" target="_blank" rel="noopener">Learn More</a>
+            </div>
+          </article>
+          <article class="rud-program-card">
+            <a href="https://www.royal.edu.bd/msc-in-cse/" target="_blank" rel="noopener">
+              <img src="https://www.royal.edu.bd/wp-content/themes/rudtheme/images/programs/program-thumb-cse-3.jpg" alt="M.Sc in Computer Science and Engineering">
+            </a>
+            <div>
+              <h3>M.Sc in Computer Science &amp; Engineering (CSE)</h3>
+              <a href="https://www.royal.edu.bd/msc-in-cse/" target="_blank" rel="noopener">Learn More</a>
+            </div>
+          </article>
+          <article class="rud-program-card">
+            <a href="https://www.royal.edu.bd/msc-in-library-management-information-science/" target="_blank" rel="noopener">
+              <img src="https://www.royal.edu.bd/wp-content/themes/rudtheme/images/programs/program-thumb-cse-4.jpg" alt="M.Sc in Library Management and Information Science">
+            </a>
+            <div>
+              <h3>M.Sc in Library Management &amp; Information Science (MSLMIS)</h3>
+              <a href="https://www.royal.edu.bd/msc-in-library-management-information-science/" target="_blank" rel="noopener">Learn More</a>
+            </div>
+          </article>
+          <article class="rud-program-card">
+            <a href="https://www.royal.edu.bd/ba-in-english-program/" target="_blank" rel="noopener">
+              <img src="https://www.royal.edu.bd/wp-content/uploads/2024/02/our-progms-eng.jpg" alt="BA Hons in English">
+            </a>
+            <div>
+              <h3>BA Hons in English Program</h3>
+              <a href="https://www.royal.edu.bd/ba-in-english-program/" target="_blank" rel="noopener">Learn More</a>
+            </div>
+          </article>
+          <article class="rud-program-card">
+            <a href="https://www.royal.edu.bd/bachelor-of-hotel-management-and-tourism/" target="_blank" rel="noopener">
+              <img src="https://www.royal.edu.bd/wp-content/uploads/2024/02/our-progms-hotel-mgn.jpg" alt="Bachelor of Hotel Management and Tourism">
+            </a>
+            <div>
+              <h3>Bachelor of Hotel Management &amp; Tourism (BHMT)</h3>
+              <a href="https://www.royal.edu.bd/bachelor-of-hotel-management-and-tourism/" target="_blank" rel="noopener">Learn More</a>
+            </div>
+          </article>
+        </div>
+        <div class="rud-program-controls">
+          <button class="rud-program-prev" type="button" aria-label="Previous programs">‹</button>
+          <span class="is-active"></span><span></span><span></span>
+          <button class="rud-program-next" type="button" aria-label="Next programs">›</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="rud-events" id="news">
+      <h2>News &amp; Events</h2>
+      <div class="rud-events-grid">
+        <div class="rud-events-side">
+          <article class="rud-event-card">
+            <a href="https://www.royal.edu.bd/the-hospitality-tourism-awards-hata-2026/" target="_blank" rel="noopener">
+              <img src="https://www.royal.edu.bd/wp-content/uploads/2026/02/625341926_1321169156717944_6183949911225908710_n.jpg" alt="The Hospitality & Tourism Awards">
+            </a>
+            <time>Feb 7th 2026</time>
+            <h3>The Hospitality &amp; Tourism Awards (HATA) ..</h3>
+            <a class="rud-event-more" href="https://www.royal.edu.bd/the-hospitality-tourism-awards-hata-2026/" target="_blank" rel="noopener">Learn More</a>
+          </article>
+          <article class="rud-event-card">
+            <a href="https://www.royal.edu.bd/%e0%a6%a4%e0%a6%be%e0%a6%b0%e0%a7%81%e0%a6%a3%e0%a7%8d%e0%a6%af%e0%a7%87%e0%a6%b0-%e0%a6%b9%e0%a6%be%e0%a6%a4-%e0%a6%a7%e0%a6%b0%e0%a7%87-%e0%a6%b8%e0%a6%b9%e0%a6%ae%e0%a6%b0%e0%a7%8d%e0%a6%ae/" target="_blank" rel="noopener">
+              <img src="https://www.royal.edu.bd/wp-content/uploads/2026/01/imgi_13_BeFunky-collage-39-2601101303.jpg" alt="RUD collaboration news">
+            </a>
+            <time>Jan 11th 2026</time>
+            <h3>তরুণের হাত ধরে সহযোগিতা: রয়্যাল ইউনিভার্সিটিতে ..</h3>
+            <a class="rud-event-more" href="https://www.royal.edu.bd/%e0%a6%a4%e0%a6%be%e0%a6%b0%e0%a7%81%e0%a6%a3%e0%a7%8d%e0%a6%af%e0%a7%87%e0%a6%b0-%e0%a6%b9%e0%a6%be%e0%a6%a4-%e0%a6%a7%e0%a6%b0%e0%a7%87-%e0%a6%b8%e0%a6%b9%e0%a6%ae%e0%a6%b0%e0%a7%8d%e0%a6%ae/" target="_blank" rel="noopener">Learn More</a>
+          </article>
+        </div>
+
+        <article class="rud-event-feature">
+          <a href="https://www.royal.edu.bd/english-carnival-2026-a-grand-programme/" target="_blank" rel="noopener">
+            <img src="https://www.royal.edu.bd/wp-content/uploads/2026/03/645494137_1342661727902020_6463566409452661009_n-1568x1045.jpg" alt="English Carnival 2026">
+          </a>
+          <time>Mar 9th 2026</time>
+          <h3>English Carnival 2026 – A Grand Programme ! ..</h3>
+          <a class="rud-event-more" href="https://www.royal.edu.bd/english-carnival-2026-a-grand-programme/" target="_blank" rel="noopener">Learn More</a>
+          <a class="rud-view-all-news" href="https://www.royal.edu.bd/news-events/" target="_blank" rel="noopener">View All News <span>›</span></a>
+        </article>
+
+        <div class="rud-events-side">
+          <article class="rud-event-card">
+            <a href="https://www.royal.edu.bd/a-new-journey-begins-at-royal-university-of-dhaka/" target="_blank" rel="noopener">
+              <img src="https://www.royal.edu.bd/wp-content/uploads/2026/01/612097417_1297574815744045_3343498028960319951_n-1568x1181.jpg" alt="A New Journey Begins at Royal University">
+            </a>
+            <time>Jan 11th 2026</time>
+            <h3>A New Journey Begins at Royal ..</h3>
+            <a class="rud-event-more" href="https://www.royal.edu.bd/a-new-journey-begins-at-royal-university-of-dhaka/" target="_blank" rel="noopener">Learn More</a>
+          </article>
+          <article class="rud-event-card">
+            <a href="https://www.royal.edu.bd/royal-university-of-dhaka-proudly-presents-a-thought-provoking-workshop/" target="_blank" rel="noopener">
+              <img src="https://www.royal.edu.bd/wp-content/uploads/2026/01/611169754_1295282929306567_6925545958085301324_n-1568x1180.jpg" alt="Royal University of Dhaka workshop">
+            </a>
+            <time>Jan 7th 2026</time>
+            <h3>Royal University of Dhaka proudly presents ..</h3>
+            <a class="rud-event-more" href="https://www.royal.edu.bd/royal-university-of-dhaka-proudly-presents-a-thought-provoking-workshop/" target="_blank" rel="noopener">Learn More</a>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="rud-footer">
+    <img class="rud-footer-logo" src="assets/footer-logo.png" alt="Royal University of Dhaka logo">
+    <div class="rud-container">
+      <div class="rud-footer-contact">
+        <h3>Royal University of<br>Dhaka (RUD)</h3>
+        <p><small>TEL</small><strong>+8802 223314603 &amp; +8802 223314607</strong></p>
+        <p><small>EMAIL</small><strong>info@royal.edu.bd</strong></p>
+        <p><small>ADDRESS</small><strong>Plot 404, Tejgaon Industrial Area, Dhaka-1208</strong></p>
+        <div class="rud-footer-socials">
+          <a href="http://www.facebook.com/royal.edu.bd" target="_blank" rel="noopener" aria-label="Facebook" data-icon="f"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://twitter.com/royaludhaka" target="_blank" rel="noopener" aria-label="Twitter" data-icon="t"><i class="fa-brands fa-twitter"></i></a>
+          <a href="https://www.instagram.com/royal.edu.bd/" target="_blank" rel="noopener" aria-label="Instagram" data-icon="◎"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://www.youtube.com/channel/UCe-xM1w9jhotOFqlUAzI0-Q" target="_blank" rel="noopener" aria-label="YouTube" data-icon="▶"><i class="fa-brands fa-youtube"></i></a>
+          <a href="https://www.linkedin.com/school/18886859/" target="_blank" rel="noopener" aria-label="LinkedIn" data-icon="in"><i class="fa-brands fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      <div class="rud-footer-links">
+        <h3>About Us</h3>
+        <a href="https://www.royal.edu.bd/about-us/" target="_blank" rel="noopener">Background &amp; History</a>
+        <a href="https://www.royal.edu.bd/about-us/" target="_blank" rel="noopener">Our Vision</a>
+        <a href="https://www.royal.edu.bd/about-us/" target="_blank" rel="noopener">Our Mission</a>
+        <a href="https://www.royal.edu.bd/about-us/" target="_blank" rel="noopener">Why Study Here</a>
+        <a href="https://www.royal.edu.bd/board-of-trustees/" target="_blank" rel="noopener">Board of Trustees</a>
+        <a href="https://www.royal.edu.bd/message-from-chairman/" target="_blank" rel="noopener">Message from Chairman</a>
+      </div>
+      <div class="rud-footer-links">
+        <h3>Important Links</h3>
+        <a href="https://www.royal.edu.bd/career/" target="_blank" rel="noopener">Career</a>
+        <a href="https://www.royal.edu.bd/students-clubs/" target="_blank" rel="noopener">Students Clubs</a>
+        <a href="https://www.royal.edu.bd/gallery/" target="_blank" rel="noopener">Gallery</a>
+        <a href="https://www.royal.edu.bd/notice-board/" target="_blank" rel="noopener">Notice Board</a>
+        <a href="https://www.royal.edu.bd/contact-us/" target="_blank" rel="noopener">Contact Us</a>
+        <a href="https://www.royal.edu.bd/research/" target="_blank" rel="noopener">Research</a>
+      </div>
+      <div class="rud-footer-links">
+        <h3>Faculties</h3>
+        <a href="https://www.royal.edu.bd/faculty-of-business-administration/" target="_blank" rel="noopener">Business Administration</a>
+        <a href="https://www.royal.edu.bd/faculty-of-science-and-engineering/" target="_blank" rel="noopener">Science &amp; Engineering</a>
+        <a href="https://www.royal.edu.bd/faculty-of-arts-social-science/" target="_blank" rel="noopener">Arts &amp; Social Science</a>
+        <a href="https://www.royal.edu.bd/faculty-member-information/" target="_blank" rel="noopener">Faculty Leadership and Faculty Members</a>
+      </div>
+    </div>
+    <p class="rud-copy">Copyright © 2025 RUD. All rights reserved</p>
+  </footer>
+
+  <div class="rud-popup" id="rudAdmissionPopup" role="dialog" aria-modal="true" aria-label="Admission fair notice">
+    <button class="rud-popup-search" type="button" aria-label="Search">⌕</button>
+    <button class="rud-popup-close" id="rudPopupClose" type="button" aria-label="Close popup">×</button>
+    <div class="rud-popup-card">
+      <img src="assets/admission-popup-cropped.png" alt="Admission Fair Summer 2026">
+    </div>
+  </div>
+
+  <script src="home.js?v=35"></script>
+</body>
+</html>

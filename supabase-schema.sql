@@ -7,6 +7,7 @@ create table if not exists students (
   batch text,
   section text,
   study_year text,
+  passing_year text,
   admission_date date,
   dob date,
   birth_place text,

@@ -612,11 +612,45 @@ tr:last-child td {
 .phase-card {
   padding: 20px;
   border-top: 4px solid var(--blue-800);
+  cursor: pointer;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+
+.phase-card:hover,
+.phase-card:focus,
+.phase-card.active {
+  border-top-color: var(--blue);
+  box-shadow: 0 16px 36px rgba(9, 43, 95, 0.16);
+  outline: none;
+  transform: translateY(-2px);
 }
 
 .phase-card p {
   color: var(--muted);
   margin-bottom: 0;
+}
+
+.phase-module-panel {
+  margin-top: 18px;
+}
+
+.phase-list {
+  display: grid;
+  gap: 10px;
+}
+
+.phase-row {
+  display: grid;
+  gap: 4px;
+  padding: 13px 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #f8fbff;
+}
+
+.phase-row span,
+.phase-empty {
+  color: var(--muted);
 }
 
 .toast {

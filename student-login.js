@@ -308,6 +308,7 @@ function personalHtml(student, activeTab) {
 
     <div class="detail-box detail-right">
       ${line("Study Year", student.studyYear)}
+      ${line("Passing Year", student.passingYear || student.passing_year)}
       ${line("Batch No.", student.batch)}
       ${line("Section", student.section)}
       ${line("Status", student.status)}
